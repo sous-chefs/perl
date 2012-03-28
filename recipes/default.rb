@@ -21,6 +21,12 @@ package "perl" do
   action :upgrade
 end
 
+if %w{redhat centos fedora scientific oracle amazon}.include?(node['platform'])
+  package "perl-CPAN" do
+    action :upgrade
+  end
+end
+
 libwww_perl = case node[:platform]
   when "redhat","centos","fedora","scientific","oracle","amazon"
     "perl-libwww-perl"
