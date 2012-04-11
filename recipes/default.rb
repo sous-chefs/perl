@@ -49,7 +49,11 @@ end
 cookbook_file "CPAN-Config.pm" do
   case node[:platform]
   when "centos","redhat"
-    path "/usr/lib/perl5/5.8.8/CPAN/Config.pm"
+    if node[:platform_version] > "6"
+      path "/usr/share/perl5/Config.pm"
+    else
+      path "/usr/lib/perl5/5.8.8/CPAN/Config.pm"
+    end
   when "arch"
     path "/usr/share/perl5/core_perl/CPAN/Config.pm"
   else
