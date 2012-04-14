@@ -34,8 +34,6 @@ libwww_perl = case node[:platform]
     "perl-libwww"
   when "debian","ubuntu","mint"
     "libwww-perl"
-  else
-    raise "unsupported operating system"
   end
 
 package libwww_perl do
@@ -49,8 +47,6 @@ libperl_dev = case node[:platform]
     "libperl-dev"
   when "arch"
     nil
-  else
-    raise "unsupported operating system"
   end
 
 package libperl_dev do
@@ -78,8 +74,6 @@ cookbook_file "CPAN-Config.pm" do
       "/usr/share/perl5/core_perl/CPAN/Config.pm"
     when "debian","ubuntu","mint"
       "/etc/perl/CPAN/Config.pm"
-    else
-      raise "unsupported operating system"
     end
   source "Config-#{node[:languages][:perl][:version]}.pm"
   owner "root"
