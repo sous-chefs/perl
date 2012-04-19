@@ -9,8 +9,8 @@ Requirements
 
 ## Platform:
 
-* Debian/Ubuntu
-* RHEL/CentOS
+* Debian/Ubuntu/Mint
+* RHEL/CentOS/Scientific/Oracle/Fedora
 * ArchLinux
 
 Usage
