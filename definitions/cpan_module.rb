@@ -24,7 +24,8 @@ define :cpan_module, :force => nil do
     else
       command "/usr/local/bin/cpan_install #{params[:name]}"
     end
-    cwd "/root"
+    root_dir = (node[:platform] == "mac_os_x") ? "/var/root" : "/root"
+    cwd root_dir
     path [ "/usr/local/bin", "/usr/bin", "/bin" ]
     not_if "perl -m#{params[:name]} -e ''"
   end

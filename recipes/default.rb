@@ -17,9 +17,12 @@
 # limitations under the License.
 #
 
+# Upgrade perl, unless it's OS X; don't want to mess around with multiple perl
+# versions installed different places unless that's what we really want
+
 package "perl" do
   action :upgrade
-end
+end unless node[:platform] == "mac_os_x"
 
 if %w{redhat centos fedora scientific oracle amazon}.include?(node['platform'])
   package "perl-CPAN" do
@@ -34,11 +37,13 @@ libwww_perl = case node[:platform]
     "perl-libwww"
   when "debian","ubuntu","mint"
     "libwww-perl"
+  when "mac_os_x"
+    nil
   end
 
 package libwww_perl do
   action :upgrade
-end
+end unless libwww_perl.nil?
 
 libperl_dev = case node[:platform]
   when "redhat","centos","fedora","scientific","oracle","amazon"
@@ -47,15 +52,20 @@ libperl_dev = case node[:platform]
     "libperl-dev"
   when "arch"
     nil
+  when "mac_os_x"
+    nil
   end
 
 package libperl_dev do
   action :upgrade
 end unless libperl_dev.nil?
 
-directory "/root/.cpan" do
+cpan_dir = (node[:platform] == "mac_os_x") ? "/var/root/.cpan" : "/root/.cpan"
+root_group = (node[:platform] == "mac_os_x") ? "admin" : "root"
+
+directory cpan_dir do
   owner "root"
-  group "root"
+  group root_group
   mode 0750
 end
 
@@ -77,13 +87,32 @@ cookbook_file "CPAN-Config.pm" do
     end
   source "Config-#{node[:languages][:perl][:version]}.pm"
   owner "root"
-  group "root"
+  group root_group
   mode 0644
+  not_if { node[:platform] == "mac_os_x" }
+end
+
+# This might work better for any platform, not just OS X
+bash "configure_perl" do
+  user "root"
+  cwd "/tmp"
+    if node[:platform_version].to_f < 10.7
+      perl_ver = node[:languages][:perl][:version]
+    else
+      perl_ver = node[:languages][:perl][:version].to_f
+    end
+    cpan_path = "/System/Library/Perl/#{perl_ver}/CPAN/Config.pm"
+  code <<-EOH
+    if [ ! -f #{cpan_path} ]; then
+      echo "y\ny" | perl -MCPAN -e shell
+    fi
+  EOH
+  only_if { node[:platform] == "mac_os_x" }
 end
 
 cookbook_file "/usr/local/bin/cpan_install" do
   source "cpan_install"
   owner "root"
-  group "root"
+  group root_group
   mode 0755
 end
