@@ -96,8 +96,16 @@ end
 bash "configure_perl" do
   user "root"
   cwd "/tmp"
+    if node[:platform_version].to_f < 10.7
+      perl_ver = node[:languages][:perl][:version]
+    else
+      perl_ver = node[:languages][:perl][:version].to_f
+    end
+    cpan_path = "/System/Library/Perl/#{perl_ver}/CPAN/Config.pm"
   code <<-EOH
-    echo "y\ny" | perl -MCPAN -e shell
+    if [ ! -f #{cpan_path} ]; then
+      echo "y\ny" | perl -MCPAN -e shell
+    fi
   EOH
   only_if { node[:platform] == "mac_os_x" }
 end
