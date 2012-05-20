@@ -26,6 +26,6 @@ remote_file cpanm['path'] do
   source cpanm['url']
   checksum cpanm['checksum']
   owner "root"
-  group "root"
+  group root_group
   mode 0755
 end
