@@ -7,6 +7,6 @@ version           "0.10.1"
 
 recipe "perl", "Installs perl and provides a script to install cpan modules"
 
-%w{ ubuntu debian mint redhat centos scientific oracle fedora arch}.each do |os|
+%w{ ubuntu debian mint redhat centos amazon scientific oracle fedora arch}.each do |os|
   supports os
 end
