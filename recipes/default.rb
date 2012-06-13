@@ -21,22 +21,8 @@ node['perl']['packages'].each do |perl_pkg|
   package perl_pkg
 end
 
-directory "/root/.cpan" do
-  owner "root"
-  group "root"
-  mode 0750
-end
-
-cookbook_file "CPAN-Config.pm" do
-  path node['perl']['cpan_path']
-  source "Config-#{node['languages']['perl']['version']}.pm"
-  owner "root"
-  group "root"
-  mode 0644
-end
-
-cookbook_file "/usr/local/bin/cpan_install" do
-  source "cpan_install"
+cookbook_file "/usr/local/bin/cpanm" do
+  source "cpanm-1.5014"
   owner "root"
   group "root"
   mode 0755

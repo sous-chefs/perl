@@ -1,7 +1,7 @@
 Description
 ===========
 
-Manages Perl installation and provides `cpan_module`, to install modules 
+Manages Perl installation and provides `cpan_module`, to install modules
 from... CPAN.
 
 Requirements

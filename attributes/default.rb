@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: perl 
+# Cookbook Name:: perl
 # Attributes:: default
 #
 # Copyright 2009, Opscode, Inc.
@@ -20,22 +20,16 @@
 case node['platform']
 when "redhat","centos","scientific","amazon","oracle","fedora"
   default['perl']['packages'] = %w{ perl perl-libwww-perl perl-CPAN }
-  default['perl']['cpan_path'] = "/usr/share/perl5/CPAN/Config.pm"
   case node['platform_version'].to_i
   when 5
     default['perl']['packages'] = %w{ perl perl-libwww-perl  }
-    default['perl']['cpan_path'] = "/usr/lib/perl5/5.8.8/CPAN/Config.pm"
   when 6
     default['perl']['packages'] = %w{ perl perl-libwww-perl perl-CPAN }
-    default['perl']['cpan_path'] = "/usr/share/perl5/CPAN/Config.pm"
   end
 when "debian","ubuntu","mint"
   default['perl']['packages'] = %w{ perl libperl-dev }
-  default['perl']['cpan_path'] = "/etc/perl/CPAN/Config.pm"
 when "arch"
   default['perl']['packages'] = %w{ perl perl-libwww }
-  default['perl']['cpan_path'] = "/usr/share/perl5/core_perl/CPAN/Config.pm"
 else
   default['perl']['packages'] = %w{ perl libperl-dev }
-  default['perl']['cpan_path'] = "/etc/perl/CPAN/Config.pm"
 end
