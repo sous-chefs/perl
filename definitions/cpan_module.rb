@@ -20,9 +20,9 @@
 define :cpan_module, :force => nil do
   execute "install-#{params[:name]}" do
     if params[:force]
-      command "/usr/local/bin/cpanm --force #{params[:name]}"
+      command "#{node['perl']['cpanm']['path']} --force #{params[:name]}"
     else
-      command "/usr/local/bin/cpanm #{params[:name]}"
+      command "#{node['perl']['cpanm']['path']} #{params[:name]}"
     end
     cwd "/root"
     # Will create working dir on /root/.cpanm
