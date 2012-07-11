@@ -21,9 +21,10 @@ node['perl']['packages'].each do |perl_pkg|
   package perl_pkg
 end
 
-remote_file node['perl']['cpanm']['path'] do
-  source node['perl']['cpanm']['url']
-  checksum node['perl']['cpanm']['checksum']
+cpanm = node['perl']['cpanm'].to_hash
+remote_file cpanm['path'] do
+  source cpanm['url']
+  checksum cpanm['checksum']
   owner "root"
   group "root"
   mode 0755
