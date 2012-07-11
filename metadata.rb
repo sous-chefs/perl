@@ -5,7 +5,7 @@ description       "Installs perl and provides a define for maintaining CPAN modu
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version           "0.10.1"
 
-recipe "perl", "Installs perl and provides a script to install cpan modules"
+recipe "perl", "Installs perl and adds a provider to install cpan modules"
 
 %w{ ubuntu debian mint redhat centos amazon scientific oracle fedora arch}.each do |os|
   supports os

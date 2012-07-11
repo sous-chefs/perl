@@ -19,12 +19,14 @@
 
 define :cpan_module, :force => nil do
   execute "install-#{params[:name]}" do
-    if params[:force] 
-      command "echo force install #{params[:name]} | /usr/bin/cpan"
+    if params[:force]
+      command "#{node['perl']['cpanm']['path']} --force #{params[:name]}"
     else
-      command "/usr/local/bin/cpan_install #{params[:name]}"
+      command "#{node['perl']['cpanm']['path']} #{params[:name]}"
     end
     cwd "/root"
+    # Will create working dir on /root/.cpanm
+    environment "HOME" => "/root"
     path [ "/usr/local/bin", "/usr/bin", "/bin" ]
     not_if "perl -m#{params[:name]} -e ''"
   end
