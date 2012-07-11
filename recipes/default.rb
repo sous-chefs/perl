@@ -21,8 +21,9 @@ node['perl']['packages'].each do |perl_pkg|
   package perl_pkg
 end
 
-cookbook_file "/usr/local/bin/cpanm" do
-  source "cpanm-1.5014"
+remote_file node['perl']['cpanm']['path'] do
+  source node['perl']['cpanm']['url']
+  checksum node['perl']['cpanm']['checksum']
   owner "root"
   group "root"
   mode 0755
