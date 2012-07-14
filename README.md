@@ -1,7 +1,7 @@
 Description
 ===========
 
-Manages Perl installation and provides `cpan_module`, to install modules 
+Manages Perl installation and provides `cpan_module`, to install modules
 from... CPAN.
 
 Requirements
@@ -16,9 +16,13 @@ Requirements
 Attributes
 ==========
 
-  * perl['packages'] - platform specific packages installed by default recipe
+  * perl\['packages'\] - platform specific packages installed by default recipe
 
-  * perl['cpan_path'] - platform specific path for CPAN configuration file
+  * perl\['cpanm'\]\['path'\] - platform specific path for `cpanm` binary to live
+
+  * perl\['cpanm'\]\['url'\] - URL to download cpanm script from
+
+  * perl\['cpanm'\]\['checksum'\] - checksum for the above remote file
 
 Usage
 =====
