@@ -22,6 +22,7 @@ node['perl']['packages'].each do |perl_pkg|
 end
 
 cpanm = node['perl']['cpanm'].to_hash
+root_group = (node[:platform] == "mac_os_x") ? "admin" : "root"
 remote_file cpanm['path'] do
   source cpanm['url']
   checksum cpanm['checksum']
