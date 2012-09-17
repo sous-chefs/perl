@@ -1,3 +1,7 @@
+## v1.0.2:
+
+* [COOK-1300] - add support for Mac OS X
+
 ## v1.0.0:
 
 * [COOK-1129] - move lists of perl packages to attributes by platform
