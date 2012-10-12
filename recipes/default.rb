@@ -17,16 +17,40 @@
 # limitations under the License.
 #
 
-node['perl']['packages'].each do |perl_pkg|
-  package perl_pkg
-end
+unless node['platform'] == 'windows'
+	node['perl']['packages'].each do |perl_pkg|
+	  package perl_pkg
+	end
 
-cpanm = node['perl']['cpanm'].to_hash
-root_group = (node[:platform] == "mac_os_x") ? "admin" : "root"
-remote_file cpanm['path'] do
-  source cpanm['url']
-  checksum cpanm['checksum']
-  owner "root"
-  group root_group
-  mode 0755
+	cpanm = node['perl']['cpanm'].to_hash
+	root_group = (node[:platform] == "mac_os_x") ? "admin" : "root"
+	remote_file cpanm['path'] do
+	  source cpanm['url']
+	  checksum cpanm['checksum']
+	  owner "root"
+	  group root_group
+	  mode 0755
+	end
+else
+	installer = "strawberry-perl-#{node['perl']['maj_version']}.#{node['perl']['min_version']}.#{node['perl']['sub_version']}-#{node['perl']['bitness']}.msi"
+		
+	directory C:\temp\
+		action :create_if_missing
+	end
+	
+	directory node['perl']['install_dir']
+		action :create_if_missing
+	end
+	
+	remote_file "C:\\temp\\#{installer}"
+		source "https://strawberry-perl.googlecode.com/files/#{installer}"
+		action :create_if_missing
+	end
+	
+	execute "Install StrawberryPerl" do
+		command "msiexec /qn /i C:\\temp\\#{installer} TARGETDIR=#{node['perl']['install_dir']} PERL_PATH=YES"
+		not_if { File.exists?("#{node['perl']['install_dir']}/bin/perl.exe") }
+	end
+	
+	
 end
