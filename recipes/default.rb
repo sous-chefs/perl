@@ -36,15 +36,24 @@ else
 		
 	directory 'C:\\temp\\' do
 		action :create
+		owner "administrator"
+		group "administrators"
+		mode 0774
 	end
 	
 	directory node['perl']['install_dir'] do
 		action :create
+		owner "administrator"
+		group "administrators"
+		mode 0774
 	end
 	
 	remote_file "C:\\temp\\#{installer}" do
 		source "https://strawberry-perl.googlecode.com/files/#{installer}"
 		action :create
+		owner "administrator"
+		group "administrators"
+		mode 0774
 	end
 	
 	execute "Install StrawberryPerl" do
