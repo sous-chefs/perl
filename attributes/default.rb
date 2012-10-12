@@ -48,7 +48,7 @@ default['perl']['cpanm']['url'] = 'https://raw.github.com/miyagawa/cpanminus/1.5
 default['perl']['cpanm']['checksum'] = '8cb7b62b55a3043c4ccb'
 default['perl']['cpanm']['path'] = '/usr/local/bin/cpanm'
 
-default['perl']['install_dir'] = 'C:\perl\'
+default['perl']['install_dir'] = 'C:\\perl\\'
 
 
 
