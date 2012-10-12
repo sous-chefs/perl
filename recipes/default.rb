@@ -34,15 +34,15 @@ unless node['platform'] == 'windows'
 else
 	installer = "strawberry-perl-#{node['perl']['maj_version']}.#{node['perl']['min_version']}.#{node['perl']['sub_version']}-#{node['perl']['bitness']}.msi"
 		
-	directory C:\temp\
+	directory 'C:\\temp\\' do
 		action :create_if_missing
 	end
 	
-	directory node['perl']['install_dir']
+	directory node['perl']['install_dir'] do
 		action :create_if_missing
 	end
 	
-	remote_file "C:\\temp\\#{installer}"
+	remote_file "C:\\temp\\#{installer}" do
 		source "https://strawberry-perl.googlecode.com/files/#{installer}"
 		action :create_if_missing
 	end
