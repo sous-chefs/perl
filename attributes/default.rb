@@ -30,6 +30,16 @@ when "debian","ubuntu","mint"
   default['perl']['packages'] = %w{ perl libperl-dev }
 when "arch"
   default['perl']['packages'] = %w{ perl perl-libwww }
+when "windows"
+  default['perl']['maj_version'] = '5'
+  default['perl']['min_version'] = '16'
+  default['perl']['sub_version'] = '1.1'
+  case node['kernel']['machine'].to_s
+  when "x86_64"
+	default['perl']['bitness'] = '64bit'
+  else
+    default['perl']['bitness'] = '32bit'
+  end
 else
   default['perl']['packages'] = %w{ perl libperl-dev }
 end
@@ -37,3 +47,8 @@ end
 default['perl']['cpanm']['url'] = 'https://raw.github.com/miyagawa/cpanminus/1.5015/cpanm'
 default['perl']['cpanm']['checksum'] = '8cb7b62b55a3043c4ccb'
 default['perl']['cpanm']['path'] = '/usr/local/bin/cpanm'
+
+default['perl']['install_dir'] = 'C:\\perl\\'
+
+
+

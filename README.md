@@ -12,6 +12,7 @@ Requirements
 * Debian/Ubuntu/Mint
 * RHEL/CentOS/Scientific/Oracle/Fedora
 * ArchLinux
+* Windows
 
 Attributes
 ==========
