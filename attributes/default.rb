@@ -31,7 +31,7 @@ when "debian","ubuntu","mint"
 when "arch"
   default['perl']['packages'] = %w{ perl perl-libwww }
 when "windows"
-  default['perl']['maj_version'] = '5.'
+  default['perl']['maj_version'] = '5'
   default['perl']['min_version'] = '16'
   default['perl']['sub_version'] = '1.1'
   case node['kernel']['machine'].to_s
