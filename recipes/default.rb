@@ -35,16 +35,16 @@ else
 	installer = "strawberry-perl-#{node['perl']['maj_version']}.#{node['perl']['min_version']}.#{node['perl']['sub_version']}-#{node['perl']['bitness']}.msi"
 		
 	directory 'C:\\temp\\' do
-		action :create_if_missing
+		action :create
 	end
 	
 	directory node['perl']['install_dir'] do
-		action :create_if_missing
+		action :create
 	end
 	
 	remote_file "C:\\temp\\#{installer}" do
 		source "https://strawberry-perl.googlecode.com/files/#{installer}"
-		action :create_if_missing
+		action :create
 	end
 	
 	execute "Install StrawberryPerl" do
