@@ -57,11 +57,14 @@ else
 	end
 	
 	execute "Install StrawberryPerl" do
-		command "msiexec /qn /i C:\\temp\\#{installer} TARGETDIR=#{node['perl']['install_dir']} PERL_PATH=YES"
-		# It Installs, but completely ignores the TARGETDIR param
-		# Y U NO INSTALL WHERE I SAY?!!!
+		command "msiexec /qn /i C:\\temp\\#{installer} INSTALLDIR=#{node['perl']['install_dir']} PERL_PATH=YES"
 		not_if { File.exists?("#{node['perl']['install_dir']}/bin/perl.exe") }
 	end
-	
+
+	execute 'Update %PATH%' do
+		if  { File.exists?("#{node['perl']['install_dir']}/bin/perl.exe") }
+			command "set path #{node['perl']['install_dir']}\\bin;%path%"
+		end
+	end
 	
 end
