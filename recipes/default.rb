@@ -59,7 +59,7 @@ else
 	execute "Install StrawberryPerl" do
 		command "msiexec /qn /i C:\\temp\\#{installer} INSTALLDIR=#{node['perl']['install_dir']} PERL_PATH=YES"
 		not_if { File.exists?("#{node['perl']['install_dir']}/bin/perl.exe") }
-		command "set path #{node['perl']['install_dir']}/bin;%path%"
+		command "set path #{node['perl']['install_dir']}bin;%path%"
 	end
 
 end
