@@ -61,7 +61,7 @@ else
 		not_if { File.exists?("#{node['perl']['install_dir']}\\perl\\bin\\perl.exe") }
 	end
 	
-	execute "Add Perl to PATH"
+	execute "Add Perl to PATH" do
 		command "setx /M path \"#{node['perl']['install_dir']}perl\\bin;%path%\""
 	end
 	
