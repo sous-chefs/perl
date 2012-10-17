@@ -59,7 +59,15 @@ else
 	execute "Install StrawberryPerl" do
 		command "msiexec /qn /i C:\\temp\\#{installer} INSTALLDIR=#{node['perl']['install_dir']} PERL_PATH=YES"
 		not_if { File.exists?("#{node['perl']['install_dir']}\\bin\\perl.exe") }
-		command "setx /M path \"#{node['perl']['install_dir']}bin;%path%\""
 	end
-
+	
+	#execute "Add Perl to PATH"
+	#	command "setx /M path \"#{node['perl']['install_dir']}bin;%path%\""
+	#end
+	
+	# Going to try the windows_path primitive
+	windows_path "#{node['perl']['install_dir']}bin" do
+		action :add
+	end	
+	
 end
