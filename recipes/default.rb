@@ -34,21 +34,29 @@ unless node['platform'] == 'windows'
 else
 	installer = "strawberry-perl-#{node['perl']['maj_version']}.#{node['perl']['min_version']}.#{node['perl']['sub_version']}-#{node['perl']['bitness']}.msi"
 		
-	directory 'C:\\temp\\' do
-		action :create
-		owner "administrator"
-		group "administrators"
-		mode 0774
-	end
+	tempdir = "#{ENV['TEMP']}"
 	
+	if tempdir.nil? || tempdir == ''
+		tempdir = 'C:\\temp\\'
+
+		#directory 'C:\\temp\\' do
+		directory "#{tempdir}" do
+	 		action :create
+	 		inherits true
+	 		owner "administrator"
+	 		group "administrators"
+	 	end
+	end
+		
 	directory node['perl']['install_dir'] do
 		action :create
+		recursive true
+		inherits true
 		owner "administrator"
 		group "administrators"
-		mode 0774
 	end
 	
-	remote_file "C:\\temp\\#{installer}" do
+	remote_file "#{tempdir}\\#{installer}" do
 		source "https://strawberry-perl.googlecode.com/files/#{installer}"
 		action :create
 		owner "administrator"
@@ -57,7 +65,7 @@ else
 	end
 	
 	execute "Install StrawberryPerl" do
-		command "msiexec /qn /i C:\\temp\\#{installer} INSTALLDIR=#{node['perl']['install_dir']} PERL_PATH=YES"
+		command "msiexec /qn /i #{tempdir}\\#{installer} INSTALLDIR=#{node['perl']['install_dir']} PERL_PATH=YES"
 		not_if { File.exists?("#{node['perl']['install_dir']}\\perl\\bin\\perl.exe") }
 	end
 	
