@@ -1,3 +1,7 @@
+## v1.1.0:
+
+* [COOK-1765] - Install Strawberry Perl on Windows in Perl Cookbook
+
 ## v1.0.2:
 
 * [COOK-1300] - add support for Mac OS X
