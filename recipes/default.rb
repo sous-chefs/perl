@@ -42,7 +42,7 @@ else
 		#directory 'C:\\temp\\' do
 		directory tempdir do
 	 		action :create
-	 		inherits true if platform?('windows')
+	 		inherits true
 	 		owner "administrator"
 	 		group "administrators"
 	 	end
