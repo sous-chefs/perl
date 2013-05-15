@@ -24,7 +24,7 @@ define :cpan_module, :force => nil do
     else
       command "#{node['perl']['cpanm']['path']} #{params[:name]}"
     end
-    root_dir = (node[:platform] == "mac_os_x") ? "/var/root" : "/root"
+    root_dir = (node['platform'] == "mac_os_x") ? "/var/root" : "/root"
     cwd root_dir
     # Will create working dir on /root/.cpanm (or /var/root)
     environment "HOME" => root_dir
