@@ -20,9 +20,9 @@
 define :cpan_module, :force => nil do
   execute "install-#{params[:name]}" do
     if params[:force]
-      command "#{node['perl']['cpanm']['path']} --force #{params[:name]}"
+      command "#{node['perl']['cpanm']['path']} --force --notest #{params[:name]}"
     else
-      command "#{node['perl']['cpanm']['path']} #{params[:name]}"
+      command "#{node['perl']['cpanm']['path']} --notest #{params[:name]}"
     end
     root_dir = (node[:platform] == "mac_os_x") ? "/var/root" : "/root"
     cwd root_dir
