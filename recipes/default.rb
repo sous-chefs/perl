@@ -34,7 +34,7 @@ unless node['platform'] == 'windows'
 else
 	installer = "strawberry-perl-#{node['perl']['maj_version']}.#{node['perl']['min_version']}.#{node['perl']['sub_version']}-#{node['perl']['bitness']}.msi"
 		
-	tempdir = ENV['TEMP']}
+	tempdir = ENV['TEMP']
 	
 	if tempdir.nil? || tempdir == ''
 		tempdir = 'C:\\temp\\'
