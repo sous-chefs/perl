@@ -34,13 +34,13 @@ unless node['platform'] == 'windows'
 else
 	installer = "strawberry-perl-#{node['perl']['maj_version']}.#{node['perl']['min_version']}.#{node['perl']['sub_version']}-#{node['perl']['bitness']}.msi"
 		
-	tempdir = "#{ENV['TEMP']}"
+	tempdir = ENV['TEMP']
 	
 	if tempdir.nil? || tempdir == ''
 		tempdir = 'C:\\temp\\'
 
 		#directory 'C:\\temp\\' do
-		directory "#{tempdir}" do
+		directory tempdir do
 	 		action :create
 	 		inherits true
 	 		owner "administrator"
