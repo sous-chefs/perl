@@ -1,3 +1,9 @@
+## v1.1.2:
+
+### Bug
+
+- [COOK-2973]: perl cookbook has foodcritic errors
+
 ## v1.1.0:
 
 * [COOK-1765] - Install Strawberry Perl on Windows in Perl Cookbook
