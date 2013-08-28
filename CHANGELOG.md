@@ -1,31 +1,35 @@
-## v1.1.2:
+perl Cookbook CHANGELOG
+=======================
+This file is used to list changes made in each version of the perl cookbook.
 
+
+v1.1.2
+------
 ### Bug
-
 - [COOK-2973]: perl cookbook has foodcritic errors
 
-## v1.1.0:
+v1.1.0
+------
+- [COOK-1765] - Install Strawberry Perl on Windows in Perl Cookbook
 
-* [COOK-1765] - Install Strawberry Perl on Windows in Perl Cookbook
+v1.0.2
+------
+- [COOK-1300] - add support for Mac OS X
 
-## v1.0.2:
+v1.0.0
+------
+- [COOK-1129] - move lists of perl packages to attributes by platform
+- [COOK-1279] - resolve regression from COOK-1129
+- [COOK-1299] - use App::cpanminus (cpanm) to install "cpan packages"
 
-* [COOK-1300] - add support for Mac OS X
+v0.10.2
+------
+- [COOK-1279] Re-factor recipe and fix platform_version 5 bug for redhat family platforms
 
-## v1.0.0:
+v0.10.1
+------
+- [COOK-1129] centos/redhat needs the CPAN RPM installed
 
-* [COOK-1129] - move lists of perl packages to attributes by platform
-* [COOK-1279] - resolve regression from COOK-1129
-* [COOK-1299] - use App::cpanminus (cpanm) to install "cpan packages"
-
-## v0.10.2:
-
-* [COOK-1279] Re-factor recipe and fix platform_version 5 bug for redhat family platforms
-
-## v0.10.1:
-
-* [COOK-1129] centos/redhat needs the CPAN RPM installed
-
-## v0.10.0:
-
-* Current released version
+v0.10.0
+------
+- Current released version
