@@ -3,6 +3,12 @@ perl Cookbook CHANGELOG
 This file is used to list changes made in each version of the perl cookbook.
 
 
+v1.2.0
+------
+### Improvement
+- **[COOK-3230](https://tickets.opscode.com/browse/COOK-3230)** - Upgrade cpanm
+- **[COOK-2998](https://tickets.opscode.com/browse/COOK-2998)** - Improve install speed by using `--notest`
+
 v1.1.2
 ------
 ### Bug
