@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-define :cpan_module, :force => nil do
+define :cpan_module, :force => nil, :upgrade => false do
   execute "install-#{params[:name]}" do
     if params[:force]
       command "#{node['perl']['cpanm']['path']} --force --notest #{params[:name]}"
@@ -29,6 +29,8 @@ define :cpan_module, :force => nil do
     # Will create working dir on /root/.cpanm (or /var/root)
     environment "HOME" => root_dir
     path [ "/usr/local/bin", "/usr/bin", "/bin" ]
-    not_if "perl -m#{params[:name]} -e ''"
+    unless params[:upgrade]
+      not_if "perl -m#{params[:name]} -e ''" 
+    end
   end
 end
