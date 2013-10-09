@@ -17,18 +17,23 @@
 # limitations under the License.
 #
 
-define :cpan_module, :force => nil do
+define :cpan_module, :force => nil, :upgrade => false do
   execute "install-#{params[:name]}" do
-    if params[:force]
-      command "#{node['perl']['cpanm']['path']} --force --notest #{params[:name]}"
-    else
-      command "#{node['perl']['cpanm']['path']} --notest #{params[:name]}"
-    end
+    flags = %w[ --notest ]
+    flags << '--force' if params[:force]
+    flags << (
+      if params[:upgrade] then 
+	'--skip-installed'
+      else 
+	'--skip-satisfied'
+      end
+    )
+    command "#{node[:perl][:cpanm][:path]} #{flags.join(' ')} #{params[:name]}" 
     root_dir = (node['platform'] == "mac_os_x") ? "/var/root" : "/root"
     cwd root_dir
     # Will create working dir on /root/.cpanm (or /var/root)
     environment "HOME" => root_dir
     path [ "/usr/local/bin", "/usr/bin", "/bin" ]
-    not_if "perl -m#{params[:name]} -e ''"
+    
   end
 end

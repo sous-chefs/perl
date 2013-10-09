@@ -34,7 +34,15 @@ Optionally, installation can forced with the 'force' parameter.
 cpan_module 'App::Munchies'
   force true
 end
+```
 
+To ensure that latest available package is installed:
+
+```ruby
+cpan_module 'App::Munchies'
+  upgrade true
+end
+```
 
 License & Authors
 -----------------
