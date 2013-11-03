@@ -35,7 +35,7 @@ Optionally, installation can forced with the 'force' parameter.
 cpan_module 'App::Munchies'
   force true
 end
-
+```
 
 License & Authors
 -----------------
