@@ -39,5 +39,11 @@ else
     owner 'root'
     group root_group
     mode 0755
+    only_if { cpanm['package'].nil? }
+  end
+
+  package 'cpanm' do
+    package_name cpanm['package']
+    not_if { cpanm['package'].nil? }
   end
 end
