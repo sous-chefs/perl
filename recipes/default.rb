@@ -2,7 +2,7 @@
 # Cookbook Name:: perl
 # Recipe:: default
 #
-# Copyright 2009, Opscode, Inc.
+# Copyright 2009-2013, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +23,11 @@ unless node['platform'] == 'windows'
 	end
 
 	cpanm = node['perl']['cpanm'].to_hash
-	root_group = (node[:platform] == "mac_os_x") ? "admin" : "root"
+	root_group = (node['platform'] == 'mac_os_x') ? 'admin' : 'root'
+
+  directory File.dirname(cpanm['path']) do
+    recursive true
+  end
 	remote_file cpanm['path'] do
 	  source cpanm['url']
 	  checksum cpanm['checksum']
