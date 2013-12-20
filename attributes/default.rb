@@ -20,12 +20,14 @@
 case node['platform_family']
 when 'rhel'
   default['perl']['packages'] = %w{ perl perl-libwww-perl perl-CPAN }
+
   case node['platform_version'].to_i
   when 5
     default['perl']['packages'] = %w{ perl perl-libwww-perl  }
   when 6
     default['perl']['packages'] = %w{ perl perl-libwww-perl perl-CPAN }
   end
+
 when 'debian'
   default['perl']['packages'] = %w{ perl libperl-dev }
 when 'arch'
@@ -36,12 +38,14 @@ when 'windows'
   default['perl']['maj_version'] = '5'
   default['perl']['min_version'] = '16'
   default['perl']['sub_version'] = '1.1'
+
   case node['kernel']['machine'].to_s
   when 'x86_64'
-	default['perl']['bitness'] = '64bit'
+    default['perl']['bitness'] = '64bit'
   else
     default['perl']['bitness'] = '32bit'
   end
+
 else
   default['perl']['packages'] = %w{ perl libperl-dev }
 end
@@ -51,6 +55,3 @@ default['perl']['cpanm']['checksum'] = 'cb35d3f1ac8f59c1458e1f67308c9caa4959f391
 default['perl']['cpanm']['path'] = '/usr/local/bin/cpanm'
 
 default['perl']['install_dir'] = 'C:\\perl\\'
-
-
-
