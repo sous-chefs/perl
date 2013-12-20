@@ -3,6 +3,12 @@ perl Cookbook CHANGELOG
 This file is used to list changes made in each version of the perl cookbook.
 
 
+v1.2.2
+------
+### New Feature
+- **[COOK-4013](https://tickets.opscode.com/browse/COOK-4013)** - add omnios support to perl cookbook
+
+
 v1.2.0
 ------
 ### Improvement
