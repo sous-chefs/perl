@@ -3,6 +3,11 @@ perl Cookbook CHANGELOG
 This file is used to list changes made in each version of the perl cookbook.
 
 
+v1.2.4 (2014-06-16)
+-------------------
+- [COOK-4725] Use windows_path to set the PATH
+
+
 v1.2.2
 ------
 ### New Feature
