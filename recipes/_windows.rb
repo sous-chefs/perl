@@ -54,6 +54,6 @@ execute 'Install StrawberryPerl' do
   not_if { File.exists?("#{node['perl']['install_dir']}\\perl\\bin\\perl.exe") }
 end
 
-execute 'Add Perl to PATH' do
-  command "setx /M path \"#{node['perl']['install_dir']}perl\\bin;%path%\""
+windows_path "#{node['perl']['install_dir']}perl\\bin" do
+  action :add
 end
