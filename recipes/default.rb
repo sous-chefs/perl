@@ -17,27 +17,17 @@
 # limitations under the License.
 #
 
-case node['platform']
-when 'windows'
-  include_recipe 'perl::_windows'
+include_recipe "build-essential::default"
+package "perl"
+package "perl-CPAN"
+package "perl-libwww-perl"
+package "tar"
+package "openssl-devel"
 
-else
-  node['perl']['packages'].each do |perl_pkg|
-    package perl_pkg
-  end
+perl_cpan_module "Archive::Tar"
+perl_cpan_module "Net::SSLeay"
+perl_cpan_module "IO::Socket::SSL"
+perl_cpan_module "Archive::Extract"
+perl_cpan_module "Archive::Zip"
+perl_cpan_module "IO::Compress::Bzip2"
 
-  cpanm = node['perl']['cpanm'].to_hash
-  root_group = node['platform'] == 'mac_os_x' ? 'admin' : 'root'
-
-  directory File.dirname(cpanm['path']) do
-    recursive true
-  end
-
-  remote_file cpanm['path'] do
-    source cpanm['url']
-    checksum cpanm['checksum']
-    owner 'root'
-    group root_group
-    mode 0755
-  end
-end
