@@ -26,11 +26,12 @@ end
 def install_cpan_module
   module_name = new_resource.name
   
+  Chef::Log.debug "Checking to see if cpanminus module exists, compile error means its missing"  
   bash "install_cpanmin" do
     code <<-EOH
       curl -L http://cpanmin.us | perl - App::cpanminus
     EOH
-  not_if { ::File.exists?("/root/.cpanm") }
+  not_if { system( "perl -e 'use App::cpanminus;'") }
   end  
 
   bash "install_cpan_module" do
@@ -42,7 +43,7 @@ end
 
 def cpan_module_exists?(name)
   module_name = new_resource.name
-  Chef::Log.debug "Checking to see if this cpan module exists #{module_name}"
+  Chef::Log.debug "Checking to see if this cpan module exists #{module_name}, compile error means its missing"
   cmdStatus = system( "perl -m#{module_name} -e ''" )
   return cmdStatus
 end
