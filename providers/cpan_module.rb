@@ -10,40 +10,53 @@ def action_install
        install_cpan_module
      end
   end
-end    
+end
 
 
 def load_current_resource
   @current_resource = Chef::Resource::PerlCpanModule.new(@new_resource.name)
   @current_resource.name(@new_resource.name)
   @current_resource
-  
+
   if cpan_module_exists?(@current_resource.name)
     @current_resource.exists = true
   end
-end 
+end
 
 def install_cpan_module
   module_name = new_resource.name
-  
-  Chef::Log.debug "Checking to see if cpanminus module exists, compile error means its missing"  
+
+  Chef::Log.debug "Checking to see if cpanminus module exists, compile error means its missing"
   bash "install_cpanmin" do
     code <<-EOH
       curl -L http://cpanmin.us | perl - App::cpanminus
     EOH
   not_if { system( "perl -e 'use App::cpanminus;'") }
-  end  
-
-  bash "install_cpan_module" do
-    code <<-EOH
-      cpanm -i '#{module_name}'
-    EOH
   end
+
+  cpanCmd = Mixlib::ShellOut.new("cpanm -i #{module_name}")
+  cpanCmd.run_command
+
+  #bash "install_cpan_module" do
+  #  code <<-EOH
+  #   cpanm -i '#{module_name}'
+  #  EOH
+  #end
 end
 
 def cpan_module_exists?(name)
   module_name = new_resource.name
   Chef::Log.debug "Checking to see if this cpan module exists #{module_name}, compile error means its missing"
-  cmdStatus = system( "perl -m#{module_name} -e ''" )
-  return cmdStatus
+  perl = Mixlib::ShellOut.new("perl -m#{module_name} -e ''")
+  perl.run_command
+
+  Chef::Log.debug "perl cpan module exists?: #{perl}"
+  Chef::Log.debug "perl cpan module exists?: #{perl.stdout}"
+
+  begin
+    perl.error!
+    true
+  rescue
+    false
+  end
 end
