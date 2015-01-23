@@ -18,6 +18,7 @@ Attributes
 - perl\['cpanm'\]\['path'\] - platform specific path for `cpanm` binary to live
 - perl\['cpanm'\]\['url'\] - URL to download cpanm script from
 - perl\['cpanm'\]\['checksum'\] - checksum for the above remote file
+- perl\['cpanm'\]\['package'\] - platform specific package to use instead of `url` and `checksum`, defaults to `nil` meaning `url` download is performed.
 
 
 Usage
@@ -34,7 +35,7 @@ Optionally, installation can forced with the 'force' parameter.
 cpan_module 'App::Munchies'
   force true
 end
-
+```
 
 License & Authors
 -----------------

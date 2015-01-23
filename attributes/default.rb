@@ -17,6 +17,11 @@
 # limitations under the License.
 #
 
+default['perl']['cpanm']['url'] = 'https://raw.github.com/miyagawa/cpanminus/1.6922/cpanm'
+default['perl']['cpanm']['checksum'] = 'cb35d3f1ac8f59c1458e1f67308c9caa4959f3912dfeac603b8aff29c6fe643d'
+default['perl']['cpanm']['path'] = '/usr/local/bin/cpanm'
+default['perl']['cpanm']['package'] = nil
+
 case node['platform_family']
 when 'rhel'
   default['perl']['packages'] = %w{ perl perl-libwww-perl perl-CPAN }
@@ -34,6 +39,13 @@ when 'arch'
   default['perl']['packages'] = %w{ perl perl-libwww }
 when 'omnios'
   default['perl']['packages'] = %w{ perl }
+when 'pld'
+  default['perl']['packages'] = %w{ perl-base }
+  case node['platform_version'].to_i
+  when 3
+    default['perl']['cpanm']['package'] = 'cpanminus'
+    default['perl']['cpanm']['path'] = '/usr/bin/cpanm'
+  end
 when 'windows'
   default['perl']['maj_version'] = '5'
   default['perl']['min_version'] = '16'
@@ -49,9 +61,5 @@ when 'windows'
 else
   default['perl']['packages'] = %w{ perl libperl-dev }
 end
-
-default['perl']['cpanm']['url'] = 'https://raw.github.com/miyagawa/cpanminus/1.6922/cpanm'
-default['perl']['cpanm']['checksum'] = 'cb35d3f1ac8f59c1458e1f67308c9caa4959f3912dfeac603b8aff29c6fe643d'
-default['perl']['cpanm']['path'] = '/usr/local/bin/cpanm'
 
 default['perl']['install_dir'] = 'C:\\perl\\'
