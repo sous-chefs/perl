@@ -11,14 +11,14 @@ v1.2.4 (2014-06-16)
 v1.2.2
 ------
 ### New Feature
-- **[COOK-4013](https://tickets.opscode.com/browse/COOK-4013)** - add omnios support to perl cookbook
+- **[COOK-4013](https://tickets.chef.io/browse/COOK-4013)** - add omnios support to perl cookbook
 
 
 v1.2.0
 ------
 ### Improvement
-- **[COOK-3230](https://tickets.opscode.com/browse/COOK-3230)** - Upgrade cpanm
-- **[COOK-2998](https://tickets.opscode.com/browse/COOK-2998)** - Improve install speed by using `--notest`
+- **[COOK-3230](https://tickets.chef.io/browse/COOK-3230)** - Upgrade cpanm
+- **[COOK-2998](https://tickets.chef.io/browse/COOK-2998)** - Improve install speed by using `--notest`
 
 v1.1.2
 ------
