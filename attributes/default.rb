@@ -19,21 +19,21 @@
 
 case node['platform_family']
 when 'rhel'
-  default['perl']['packages'] = %w{ perl perl-libwww-perl perl-CPAN }
+  default['perl']['packages'] = %w(perl perl-libwww-perl perl-CPAN)
 
   case node['platform_version'].to_i
   when 5
-    default['perl']['packages'] = %w{ perl perl-libwww-perl  }
+    default['perl']['packages'] = %w(perl perl-libwww-perl)
   when 6
-    default['perl']['packages'] = %w{ perl perl-libwww-perl perl-CPAN }
+    default['perl']['packages'] = %w(perl perl-libwww-perl perl-CPAN)
   end
 
 when 'debian'
-  default['perl']['packages'] = %w{ perl libperl-dev }
+  default['perl']['packages'] = %w(perl libperl-dev)
 when 'arch'
-  default['perl']['packages'] = %w{ perl perl-libwww }
+  default['perl']['packages'] = %w(perl perl-libwww)
 when 'omnios'
-  default['perl']['packages'] = %w{ perl }
+  default['perl']['packages'] = %w(perl)
 when 'windows'
   default['perl']['maj_version'] = '5'
   default['perl']['min_version'] = '16'
@@ -47,7 +47,7 @@ when 'windows'
   end
 
 else
-  default['perl']['packages'] = %w{ perl libperl-dev }
+  default['perl']['packages'] = %w(perl libperl-dev)
 end
 
 default['perl']['cpanm']['url'] = 'https://raw.github.com/miyagawa/cpanminus/1.6922/cpanm'

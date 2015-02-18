@@ -51,7 +51,7 @@ end
 
 execute 'Install StrawberryPerl' do
   command "msiexec /qn /i #{tempdir}\\#{installer} INSTALLDIR=#{node['perl']['install_dir']} PERL_PATH=YES"
-  not_if { File.exists?("#{node['perl']['install_dir']}\\perl\\bin\\perl.exe") }
+  not_if { File.exist?("#{node['perl']['install_dir']}\\perl\\bin\\perl.exe") }
 end
 
 windows_path "#{node['perl']['install_dir']}perl\\bin" do
