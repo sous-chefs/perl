@@ -3,6 +3,7 @@ require_relative 'helpers'
 
 class Chef
   class Provider
+    # Provider for cpan_module lwrp
     class CpanModule < Chef::Provider::LWRPBase
       # Chef 11 LWRP DSL Methods
       use_inline_resources if defined?(use_inline_resources)

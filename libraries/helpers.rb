@@ -1,4 +1,5 @@
 module PerlCookbook
+  # A set of helpers to use in the perl cookbook
   module Helpers
     include Chef::DSL::IncludeRecipe
 

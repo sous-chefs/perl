@@ -2,6 +2,7 @@ require 'chef/resource/lwrp_base'
 
 class Chef
   class Resource
+    # Resource for cpan_module lwrp
     class CpanModule < Chef::Resource::LWRPBase
       self.resource_name = :cpan_module
       actions :create, :delete
