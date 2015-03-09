@@ -46,6 +46,15 @@ cpan_module 'App::Munchies'
 end
 ```
 
+Additionally, you can use the `cpan_module` LWRP to delete a given package (uses cpanm's `--uninstall` param)
+
+```ruby
+cpan_module 'App::Munchies'
+  action :delete
+end
+```
+
+
 License & Authors
 -----------------
 
