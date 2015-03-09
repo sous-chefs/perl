@@ -12,7 +12,6 @@ class Chef
       attribute :force, kind_of: [TrueClass, FalseClass], default: false
       attribute :test, kind_of: [TrueClass, FalseClass], default: false
       attribute :version, kind_of: String, default: nil
-      attribute :exact_version, kind_of: [TrueClass, FalseClass], default: false
       attribute :cwd, kind_of: String, default: nil
     end
   end
