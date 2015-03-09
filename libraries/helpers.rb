@@ -13,6 +13,7 @@ module PerlCookbook
       @cmd += '--force ' if new_resource.force
       @cmd += '--notest ' unless new_resource.test
       @cmd += new_resource.name
+      @cmd += parsed_version
       @cmd
     end
 
@@ -23,6 +24,12 @@ module PerlCookbook
       @cmd += '--uninstall '
       @cmd += new_resource.name
       @cmd
+    end
+
+    # a bit of a stub, could use a version parser for really consistent expeirence
+    def parsed_version
+      return "~\"#{new_resource.version}\"" if new_resource.version
+      ''
     end
 
     def current_working_dir

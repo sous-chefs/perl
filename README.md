@@ -46,6 +46,32 @@ cpan_module 'App::Munchies'
 end
 ```
 
+You can also use [cpanm's version mechanism](http://search.cpan.org/~miyagawa/App-cpanminus-1.7027/bin/cpanm#COMMANDS) to grab a specific version, or glob a version.
+
+Exactly version 1.01 of `App::Munchies` will be installed:
+
+```ruby
+cpan_module 'App::Munchies'
+  version '== 1.01'
+end
+```
+
+At least version 1.01 of `App::Munchies` will be installed:
+
+```ruby
+cpan_module 'App::Munchies'
+  version '1.01'
+end
+```
+
+At least version 1.01 will be installed, but not version 2:
+
+```ruby
+cpan_module 'App::Munchies'
+  version '>= 1.01, < 2.0'
+end
+```
+
 Additionally, you can use the `cpan_module` LWRP to delete a given package (uses cpanm's `--uninstall` param)
 
 ```ruby
