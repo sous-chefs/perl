@@ -29,7 +29,7 @@ when 'rhel'
   end
 
 when 'debian'
-  default['perl']['packages'] = %w(perl libperl-dev)
+  default['perl']['packages'] = %w(perl libperl-dev libwww-perl)
 when 'arch'
   default['perl']['packages'] = %w(perl perl-libwww)
 when 'omnios'
