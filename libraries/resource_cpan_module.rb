@@ -13,6 +13,7 @@ class Chef
       attribute :test, kind_of: [TrueClass, FalseClass], default: false
       attribute :version, kind_of: String, default: nil
       attribute :cwd, kind_of: String, default: nil
+      attribute :verbose, kind_of: [TrueClass, FalseClass], default: false
     end
   end
 end

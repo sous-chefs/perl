@@ -4,12 +4,14 @@ module PerlCookbook
     include Chef::DSL::IncludeRecipe
 
     def module_exists
-      "perl -m#{new_resource.name} -e ';'"
+      return false if new_resource.force
+      "perl -m#{new_resource.name} -e ';' > /dev/null 2>&1"
     end
 
     def cpanm_install_cmd
       @cmd = ''
       @cmd = "#{node['perl']['cpanm']['path']} "
+      @cmd += '--quiet ' unless new_resource.verbose
       @cmd += '--force ' if new_resource.force
       @cmd += '--notest ' unless new_resource.test
       @cmd += new_resource.name
