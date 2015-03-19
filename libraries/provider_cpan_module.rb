@@ -20,7 +20,7 @@ class Chef
           cwd current_working_dir
           command cpanm_install_cmd
           environment 'HOME' => current_working_dir, 'PATH' => '/usr/local/bin:/usr/bin:/bin'
-          not_if module_exists
+          not_if { module_exists_new_enough }
         end
       end
 
