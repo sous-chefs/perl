@@ -18,7 +18,7 @@ module PerlCookbook
     end
 
     def cpanm_install_cmd
-      @cmd = "#{node['perl']['cpanm']['path']} --quiet"
+      @cmd = "#{node['perl']['cpanm']['path']} --quiet "
       @cmd += '--force ' if new_resource.force
       @cmd += '--notest ' unless new_resource.test
       @cmd += new_resource.name
