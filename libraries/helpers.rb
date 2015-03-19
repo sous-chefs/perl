@@ -7,7 +7,7 @@ module PerlCookbook
       mod_ver = `perl -M#{new_resource.name} -e 'print $#{new_resource.name}::VERSION;' 2> /dev/null`
       return false if mod_ver.empty? # mod doesn't exist
       return true if new_resource.version.nil? # mod exists and version is unimportant
-      mod_ver = mod_ver.sub(/v/, '') # perl module maintainers sometimes break version guidelines..
+      mod_ver = mod_ver.sub(/v/, '').sub(/_/, '.') # perl module versions dont really have guidelines. do our best.
       @comparator, @pending_version = new_resource.version.split(' ', 2)
       @current_vers = Gem::Version.new(mod_ver)
       @pending_vers = Gem::Version.new(@pending_version)
