@@ -11,3 +11,7 @@ recipe 'perl', 'Installs perl and adds a provider to install cpan modules'
 %w(ubuntu debian mint redhat centos amazon scientific oracle fedora arch).each do |os|
   supports os
 end
+
+source_url 'https://github.com/opscode-cookbooks/perl' if respond_to?(:source_url)
+issues_url 'https://github.com/opscode-cookbooks/perl/issues' if respond_to?(:issues_url)
+
