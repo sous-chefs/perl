@@ -12,6 +12,6 @@ recipe 'perl', 'Installs perl and adds a provider to install cpan modules'
   supports os
 end
 
-source_url 'https://github.com/opscode-cookbooks/perl' if respond_to?(:source_url)
-issues_url 'https://github.com/opscode-cookbooks/perl/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-cookbooks/perl' if respond_to?(:source_url)
+issues_url 'https://github.com/chef-cookbooks/perl/issues' if respond_to?(:issues_url)
 
