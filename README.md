@@ -1,5 +1,8 @@
 perl Cookbook
 =============
+[![Build Status](https://travis-ci.org/chef-cookbooks/perl.svg?branch=master)](http://travis-ci.org/chef-cookbooks/perl)
+[![Cookbook Version](https://img.shields.io/cookbook/v/perl.svg)](https://supermarket.chef.io/cookbooks/perl)
+
 Manages Perl installation and provides `cpan_module`, to install modules from... CPAN.
 
 
@@ -41,7 +44,7 @@ License & Authors
 - Author:: Joshua Timberman (<joshua@chef.io>)
 
 ```text
-Copyright:: 2009, Chef Software, Inc.
+Copyright:: 2009-2015, Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
