@@ -1,15 +1,12 @@
 sudo: false
 cache: bundler
 language: ruby
-bundler_args: --without development integration
+bundler_args: --without kitchen_common kitchen_vagrant kitchen_cloud
 rvm:
-  - 1.9.3
-  - 2.0.0
-before_install:
-  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
-before_script:
-  - bundle exec berks install
+  - 2.0
+  - 2.1
+  - 2.2
 script:
-#  - bundle exec foodcritic -f any . --tags ~FC005
+  - bundle exec foodcritic -f any .
   - bundle exec rubocop
-#  - bundle exec rspec --color --format progress
+  - bundle exec rspec --color --format progress
