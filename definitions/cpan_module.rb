@@ -18,7 +18,7 @@
 #
 
 # TODO: convert this to an LWRP
-define :cpan_module, :force => nil do
+define :cpan_module, force: nil do
   execute "install-#{params[:name]}" do
     if params[:force]
       command "#{node['perl']['cpanm']['path']} --force --notest #{params[:name]}"
