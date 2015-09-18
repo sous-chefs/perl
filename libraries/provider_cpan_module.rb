@@ -15,8 +15,8 @@ class Chef
       # Mix in helpers from libraries/helpers.rb
       include PerlCookbook::Helpers
 
-      action :create do
-        execute "CPAN :create #{new_resource.name}" do
+      action :install do
+        execute "CPAN :install #{new_resource.name}" do
           cwd current_working_dir
           command cpanm_install_cmd
           environment 'HOME' => current_working_dir, 'PATH' => '/usr/local/bin:/usr/bin:/bin'
@@ -24,8 +24,8 @@ class Chef
         end
       end
 
-      action :delete do
-        execute "CPAN :delete #{new_resource.name}" do
+      action :uninstall do
+        execute "CPAN :uninstall #{new_resource.name}" do
           cwd current_working_dir
           command cpanm_uninstall_cmd
           only_if module_exists

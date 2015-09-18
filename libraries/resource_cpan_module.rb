@@ -5,8 +5,8 @@ class Chef
     # Resource for cpan_module lwrp
     class CpanModule < Chef::Resource::LWRPBase
       self.resource_name = :cpan_module
-      actions :create, :delete
-      default_action :create
+      actions :install, :uninstall
+      default_action :install
 
       attribute :module, kind_of: String, name_attribute: true
       attribute :force, kind_of: [TrueClass, FalseClass], default: false
