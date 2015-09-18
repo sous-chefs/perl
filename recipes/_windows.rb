@@ -46,7 +46,7 @@ remote_file "#{tempdir}\\#{installer}" do
   action :create
   owner 'administrator'
   group 'administrators'
-  mode 0774
+  mode '0774'
 end
 
 execute 'Install StrawberryPerl' do
