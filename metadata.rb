@@ -2,7 +2,7 @@ name 'perl'
 maintainer 'Chef Software, Inc.'
 maintainer_email 'cookbooks@chef.io'
 license 'Apache 2.0'
-description 'Installs perl and provides a define for maintaining CPAN modules'
+description 'Installs perl and provides a resource for maintaining CPAN modules'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '1.2.5'
 
