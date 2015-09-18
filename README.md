@@ -76,7 +76,7 @@ Additionally, you can use the `cpan_module` LWRP to delete a given package (uses
 
 ```ruby
 cpan_module 'App::Munchies'
-  action :delete
+  action :uninstall
 end
 ```
 
