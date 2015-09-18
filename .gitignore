@@ -45,4 +45,3 @@ vendor/
 .vagrant.d/
 .kitchen/
 .kitchen.local.yml
-Berksfile.lock
