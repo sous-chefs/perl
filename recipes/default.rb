@@ -38,6 +38,6 @@ else
     checksum cpanm['checksum']
     owner 'root'
     group root_group
-    mode 0755
+    mode '0755'
   end
 end
