@@ -14,7 +14,9 @@ module PerlCookbook
     end
 
     def parse_cpan_version
-      mod_ver = `perl -M#{new_resource.name} -e 'print $#{new_resource.name}::VERSION;' 2> /dev/null`
+      mod_ver_cmd = Mixlib::ShellOut.new("perl -M#{new_resource.name} -e 'print $#{new_resource.name}::VERSION;' 2> /dev/null")
+      mod_ver_cmd.run_command
+      mod_ver = mod_ver_cmd.stdout
       return mod_ver if mod_ver.empty?
       # remove leading v and convert underscores to dots since gems parses them wrong
       mod_ver.gsub!(/v_/, 'v' => 3, '_' => '.')
