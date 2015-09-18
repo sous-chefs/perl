@@ -3,7 +3,7 @@ module PerlCookbook
   module Helpers
     include Chef::DSL::IncludeRecipe
 
-    def module_exists_new_enough # rubocop:disable Metrics/AbcSize
+    def module_exists_new_enough
       existing_version = parse_cpan_version
       return false if existing_version.empty? # mod doesn't exist
       return true if new_resource.version.nil? # mod exists and version is unimportant
