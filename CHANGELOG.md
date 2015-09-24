@@ -2,17 +2,38 @@ perl Cookbook CHANGELOG
 =======================
 This file is used to list changes made in each version of the perl cookbook.
 
+v2.0.0 (2015-09-24)
+-------------------
+- Rewrote cpan_module definition as a LWRP with Chefspec tests and matchers
+- Add the ability to select version in the cpan_module LWRP
+- Fixed cpan_module incompatibility with Chef 12
+- Fixed download location for cpanm to prevent failures on the redirect
+- Removed Chef 10 compatibility.  This cookbook now requires 11+
+- Added libwww-perl installation on Debian systems
+- Added support for RHEL/CentOS 7 and Fedora to the default.rb recipe
+- Added source_url and issues_url metadata
+- Added a chefignore file to limit files uploaded to the server
+- Updated Contributing and Testing docs
+- Added a rakefile for simplified testing
+- Added maintainers.md and maintainers.toml file and a Rake task for generating MD from TOML
+- Updated platforms tested in Kitchen CI and update the Kitchen config format
+- Updated to the standard chef .rubocop.yml file
+- Updated all testing and development gems to the latest
+- Add basic Chefspec test
+- Updated Travis CI to test on modern ruby versions and reenabled rspec and foodcritic testing
+- Added cookbook version and Travis CI badges to the readme
+- Added a .foodcritic file to skip FC015
+- Removed all references to Opscode
+- Remove the Gemfile.lock that shouldn't have been committed
 
 v1.2.4 (2014-06-16)
 -------------------
 - [COOK-4725] Use windows_path to set the PATH
 
-
 v1.2.2
 ------
 ### New Feature
 - **[COOK-4013](https://tickets.chef.io/browse/COOK-4013)** - add omnios support to perl cookbook
-
 
 v1.2.0
 ------
