@@ -18,13 +18,13 @@
 #
 
 case node['platform_family']
-when 'rhel'
+when 'rhel', 'fedora'
   default['perl']['packages'] = %w(perl perl-libwww-perl perl-CPAN)
 
   case node['platform_version'].to_i
   when 5
     default['perl']['packages'] = %w(perl perl-libwww-perl)
-  when 6
+  else
     default['perl']['packages'] = %w(perl perl-libwww-perl perl-CPAN)
   end
 
