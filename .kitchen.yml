@@ -12,16 +12,12 @@ platforms:
   - name: debian-8.1
     run_list: apt::default
   - name: fedora-21
+  - name: fedora-22
   - name: ubuntu-12.04
     run_list: apt::default
   - name: ubuntu-14.04
     run_list: apt::default
-  - name: omnios-r151006c
-    driver_config:
-      box: omnios-r151006c
-      box_url: http://omnios.omniti.com/media/OmniOS_r151006c-r1.box
 
 suites:
-- name: default
-  run_list: ["recipe[perl]"]
-  attributes: {}
+  - name: default
+    run_list: perl::default
