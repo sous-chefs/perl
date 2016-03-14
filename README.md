@@ -1,38 +1,36 @@
-perl Cookbook
-=============
+# perl Cookbook
 
-[![Build Status](https://travis-ci.org/chef-cookbooks/perl.svg?branch=master)](http://travis-ci.org/chef-cookbooks/perl)
-[![Cookbook Version](https://img.shields.io/cookbook/v/perl.svg)](https://supermarket.chef.io/cookbooks/perl)
+[![Build Status](https://travis-ci.org/chef-cookbooks/perl.svg?branch=master)](http://travis-ci.org/chef-cookbooks/perl) [![Cookbook Version](https://img.shields.io/cookbook/v/perl.svg)](https://supermarket.chef.io/cookbooks/perl)
 
 Manages Perl installation and provides `cpan_module`, to install modules from... CPAN.
 
+## Requirements
 
-Requirements
-------------
-#### Platforms
+### Platforms
+
 - Debian/Ubuntu/Mint
 - RHEL/CentOS/Scientific/Amazon/Oracle
 - Fedora
 - ArchLinux
 - Windows
 
-#### Chef
+### Chef
+
 - Chef 11+
 
-#### Cookbooks
+### Cookbooks
+
 - none
 
+## Attributes
 
-Attributes
-----------
-- perl\['packages'\] - platform specific packages installed by default recipe
-- perl\['cpanm'\]\['path'\] - platform specific path for `cpanm` binary to live
-- perl\['cpanm'\]\['url'\] - URL to download cpanm script from
-- perl\['cpanm'\]\['checksum'\] - checksum for the above remote file
+- perl['packages'] - platform specific packages installed by default recipe
+- perl['cpanm']['path'] - platform specific path for `cpanm` binary to live
+- perl['cpanm']['url'] - URL to download cpanm script from
+- perl['cpanm']['checksum'] - checksum for the above remote file
 
+## Usage
 
-Usage
------
 To install a module from CPAN:
 
 ```ruby
@@ -81,11 +79,9 @@ cpan_module 'App::Munchies'
 end
 ```
 
+## License & Authors
 
-License & Authors
------------------
-
-**Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
+**Author:** Cookbook Engineering Team ([cookbooks@chef.io](mailto:cookbooks@chef.io))
 
 **Copyright:** 2009-2015, Chef Software, Inc.
 
