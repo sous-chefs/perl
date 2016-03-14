@@ -4,7 +4,7 @@ describe 'cpan_module_test::uninstall' do
   context 'on Ubuntu 12.04' do
     cached(:chef_run) do
       ChefSpec::ServerRunner.new(step_into: 'cpan_module')
-        .converge(described_recipe)
+                            .converge(described_recipe)
     end
     it 'expects cpan LWRP to run' do
       stub_command("perl -mTest::MockModule -e ';' 2> /dev/null").and_return(true)

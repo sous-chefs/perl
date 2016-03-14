@@ -10,7 +10,7 @@ module PerlCookbook
       @comparator, @pending_version = new_resource.version.split(' ', 2)
       @current_vers = Gem::Version.new(existing_version)
       @pending_vers = Gem::Version.new(@pending_version)
-      (@current_vers.method(@comparator)).call(@pending_vers)
+      @current_vers.method(@comparator).call(@pending_vers)
     end
 
     def parse_cpan_version

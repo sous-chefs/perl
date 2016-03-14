@@ -39,12 +39,12 @@ when 'windows'
   default['perl']['min_version'] = '16'
   default['perl']['sub_version'] = '1.1'
 
-  case node['kernel']['machine'].to_s
-  when 'x86_64'
-    default['perl']['bitness'] = '64bit'
-  else
-    default['perl']['bitness'] = '32bit'
-  end
+  default['perl']['bitness'] = case node['kernel']['machine'].to_s
+                               when 'x86_64'
+                                 '64bit'
+                               else
+                                 '32bit'
+                               end
 
 else
   default['perl']['packages'] = %w(perl libperl-dev)
