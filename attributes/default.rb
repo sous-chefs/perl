@@ -23,7 +23,7 @@ when 'rhel', 'fedora'
 
   default['perl']['packages'] = case node['platform_version'].to_i
                                 when 5
-                                  %w(perl perl-devel)
+                                  %w(perl)
                                 else
                                   %w(perl perl-devel perl-CPAN)
                                 end
