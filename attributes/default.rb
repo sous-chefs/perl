@@ -19,19 +19,16 @@
 
 case node['platform_family']
 when 'rhel', 'fedora'
-  default['perl']['packages'] = %w(perl perl-libwww-perl perl-CPAN)
+  default['perl']['packages'] = %w(perl perl-CPAN)
 
   default['perl']['packages'] = case node['platform_version'].to_i
                                 when 5
-                                  %w(perl perl-libwww-perl)
+                                  %w(perl)
                                 else
-                                  %w(perl perl-libwww-perl perl-CPAN)
+                                  %w(perl perl-CPAN)
                                 end
-
-when 'debian'
-  default['perl']['packages'] = %w(perl libperl-dev libwww-perl)
 when 'arch'
-  default['perl']['packages'] = %w(perl perl-libwww)
+  default['perl']['packages'] = %w(perl)
 when 'omnios'
   default['perl']['packages'] = %w(perl)
 when 'windows'
