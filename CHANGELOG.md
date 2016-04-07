@@ -2,6 +2,18 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## v3.0.0 (2016-04-07)
+
+- Removed installation of the libwww-perl package, which is not required for Perl to function out of the box and can be installed by CPAN instead
+- Resolved Chef 13 compatibility warnings in the cpan_module provider
+- Updated the Windows Perl download URL to the new server
+- Updated Perl to 5.22.1.3 on Windows
+- Added the windows cookbook as a dependency so the Windows install converges
+- Added module install / uninstall to the default Test Kitchen suite
+- Added a basic Kitchen Inspec test to ensure perl is installed
+- Added build-essential to the test cookbook so module installs would complete
+- Added perl-devel to RHEL 6+ hosts
+
 ## v2.0.0 (2015-09-24)
 
 - Rewrote cpan_module definition as a LWRP with Chefspec tests and matchers
