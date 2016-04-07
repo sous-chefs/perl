@@ -36,8 +36,8 @@ when 'omnios'
   default['perl']['packages'] = %w(perl)
 when 'windows'
   default['perl']['maj_version'] = '5'
-  default['perl']['min_version'] = '16'
-  default['perl']['sub_version'] = '1.1'
+  default['perl']['min_version'] = '22'
+  default['perl']['sub_version'] = '1.3'
 
   default['perl']['bitness'] = case node['kernel']['machine'].to_s
                                when 'x86_64'
