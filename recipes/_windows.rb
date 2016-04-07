@@ -42,7 +42,7 @@ directory node['perl']['install_dir'] do
 end
 
 remote_file "#{tempdir}\\#{installer}" do
-  source "https://strawberry-perl.googlecode.com/files/#{installer}"
+  source "http://strawberryperl.com/download/#{node['perl']['maj_version']}.#{node['perl']['min_version']}.#{node['perl']['sub_version']}/#{installer}"
   action :create
   owner 'administrator'
   group 'administrators'
