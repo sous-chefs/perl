@@ -5,6 +5,8 @@ class Chef
   class Provider
     # Provider for cpan_module lwrp
     class CpanModule < Chef::Provider::LWRPBase
+      provides(:cpan_module) if defined?(provides)
+
       use_inline_resources
 
       def whyrun_supported?
