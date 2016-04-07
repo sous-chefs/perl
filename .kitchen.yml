@@ -4,6 +4,9 @@ driver:
 provisioner:
   name: chef_zero
 
+verifier:
+  name: inspec
+
 platforms:
   - name: centos-5.11
   - name: centos-6.7
@@ -23,4 +26,4 @@ platforms:
 
 suites:
   - name: default
-    run_list: perl::default
+    run_list: perl_test::default
