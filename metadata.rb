@@ -8,7 +8,7 @@ version '3.0.0'
 
 recipe 'perl', 'Installs perl and adds a provider to install cpan modules'
 
-%w(ubuntu debian mint redhat centos amazon scientific oracle fedora arch windows ).each do |os|
+%w(ubuntu debian mint redhat centos amazon scientific oracle fedora arch windows zlinux ).each do |os|
   supports os
 end
 
