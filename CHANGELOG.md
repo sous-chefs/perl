@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## v3.1.0 (2016-08-05)
+
+- Added support for SUSE / openSUSE and IBM zlinux
+
 ## v3.0.0 (2016-04-07)
 
 - Removed installation of the libwww-perl package, which is not required for Perl to function out of the box and can be installed by CPAN instead
@@ -20,7 +24,7 @@ This file is used to list changes made in each version of the perl cookbook.
 - Add the ability to select version in the cpan_module LWRP
 - Fixed cpan_module incompatibility with Chef 12
 - Fixed download location for cpanm to prevent failures on the redirect
-- Removed Chef 10 compatibility.  This cookbook now requires 11+
+- Removed Chef 10 compatibility. This cookbook now requires 11+
 - Added libwww-perl installation on Debian systems
 - Added support for RHEL/CentOS 7 and Fedora to the default.rb recipe
 - Added source_url and issues_url metadata
