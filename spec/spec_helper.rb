@@ -1,9 +1,8 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
-require 'chefspec/cacher'
 
 RSpec.configure do |config|
-  config.log_level = :fatal
+  config.log_level = :error
 
   # Guard against people using deprecated RSpec syntax
   config.raise_errors_for_deprecations!
@@ -14,7 +13,7 @@ RSpec.configure do |config|
 
   # Set a default platform (this is overriden as needed)
   config.platform  = 'ubuntu'
-  config.version   = '12.04'
+  config.version   = '14.04'
 
   # Be random!
   config.order = 'random'
