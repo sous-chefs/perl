@@ -27,6 +27,8 @@ when 'rhel', 'fedora'
                                 else
                                   %w(perl perl-devel perl-CPAN)
                                 end
+when 'suse'
+  default['perl']['packages'] = %w(perl devel_perl) 
 when 'arch'
   default['perl']['packages'] = %w(perl)
 when 'omnios'
