@@ -27,12 +27,8 @@ when 'rhel', 'fedora'
                                 else
                                   %w(perl perl-devel perl-CPAN)
                                 end
-when 'suse'
-  default['perl']['packages'] = %w(perl devel_perl) 
-when 'arch'
-  default['perl']['packages'] = %w(perl)
-when 'omnios'
-  default['perl']['packages'] = %w(perl)
+when 'debian'
+  default['perl']['packages'] = %w(perl libperl-dev)
 when 'windows'
   default['perl']['maj_version'] = '5'
   default['perl']['min_version'] = '22'
@@ -46,7 +42,7 @@ when 'windows'
                                end
 
 else
-  default['perl']['packages'] = %w(perl libperl-dev)
+  default['perl']['packages'] = %w(perl)
 end
 
 default['perl']['cpanm']['url'] = 'https://raw.githubusercontent.com/miyagawa/cpanminus/1.6922/cpanm'

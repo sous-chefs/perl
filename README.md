@@ -11,6 +11,7 @@ Manages Perl installation and provides `cpan_module`, to install modules from...
 - Debian/Ubuntu/Mint
 - RHEL/CentOS/Scientific/Amazon/Oracle
 - Fedora
+- openSUSE
 - ArchLinux
 - Windows
 
