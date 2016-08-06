@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'perl_test::default' do
-  context 'on Ubuntu 12.04' do
+  context 'on Ubuntu 16.04' do
     let(:chef_run) do
       ChefSpec::ServerRunner.new(step_into: 'cpan_module')
                             .converge(described_recipe)
