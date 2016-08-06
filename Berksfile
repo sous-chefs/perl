@@ -4,7 +4,6 @@ metadata
 
 group :integration do
   cookbook 'yum'
-  cookbook 'apt'
   cookbook 'build-essential'
   cookbook 'perl_test', path: 'test/fixtures/cookbooks/perl_test'
 end
