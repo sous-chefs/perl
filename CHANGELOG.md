@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## 4.0.0 (2016-09-03)
+
+- Testing updates
+- Require Chef 12 or later
+
 ## v3.1.0 (2016-08-05)
 
 - Added support for SUSE / openSUSE and IBM zlinux
