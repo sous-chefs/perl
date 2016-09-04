@@ -12,12 +12,11 @@ Manages Perl installation and provides `cpan_module`, to install modules from...
 - RHEL/CentOS/Scientific/Amazon/Oracle
 - Fedora
 - openSUSE
-- ArchLinux
 - Windows
 
 ### Chef
 
-- Chef 11+
+- Chef 12+
 
 ### Cookbooks
 

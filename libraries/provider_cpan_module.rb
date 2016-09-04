@@ -5,7 +5,7 @@ class Chef
   class Provider
     # Provider for cpan_module lwrp
     class CpanModule < Chef::Provider::LWRPBase
-      provides(:cpan_module) if defined?(provides)
+      provides(:cpan_module)
 
       use_inline_resources
 
