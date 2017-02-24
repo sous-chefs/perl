@@ -16,7 +16,7 @@ Manages Perl installation and provides `cpan_module`, to install modules from...
 
 ### Chef
 
-- Chef 12.1+
+- Chef 12.5+
 
 ### Cookbooks
 
