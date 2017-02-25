@@ -6,8 +6,6 @@ property :test, [TrueClass, FalseClass], default: false
 property :version, String
 property :cwd, String
 
-include PerlCookbook::Helpers
-
 action :install do
   execute "CPAN :install #{new_resource.name}" do
     cwd current_working_dir
