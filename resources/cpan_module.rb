@@ -25,7 +25,6 @@ action :uninstall do
   end
 end
 
-
 action_class.class_eval do
   def module_exists_new_enough
     existing_version = parse_cpan_version
