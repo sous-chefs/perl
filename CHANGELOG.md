@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## 5.0.0 (2017-02-27)
+
+- Convert the existing HWRP to a custom resource and require Chef 12.5 and later
+
 ## 4.0.0 (2016-09-03)
 
 - Testing updates
