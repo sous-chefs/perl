@@ -1,16 +1,18 @@
-apt_update 'update' if platform_family?('debian')
+apt_update 'update'
 
 include_recipe 'perl::default'
 
 unless platform?('windows')
   include_recipe 'build-essential::default' # required to compile modules
 
-  cpan_module 'Test::MockModule' do
+  cpan_module 'Install test module' do
+    module 'Test::MockModule'
     version '>= 0.05'
     action [:install]
   end
 
-  cpan_module 'Test::MockModule' do
+  cpan_module 'Uninstall test module' do
+    module 'Test::MockModule'
     action [:uninstall]
   end
 
