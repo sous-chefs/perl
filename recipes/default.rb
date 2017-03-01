@@ -26,7 +26,6 @@ else
   end
 
   cpanm = node['perl']['cpanm'].to_hash
-  root_group = node['platform'] == 'mac_os_x' ? 'admin' : 'root'
 
   directory File.dirname(cpanm['path']) do
     recursive true
@@ -36,7 +35,7 @@ else
     source cpanm['url']
     checksum cpanm['checksum']
     owner 'root'
-    group root_group
+    group node['root_group']
     mode '0755'
   end
 end
