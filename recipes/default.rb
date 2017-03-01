@@ -21,7 +21,7 @@ case node['platform']
 when 'windows'
   include_recipe 'perl::_windows'
 else
-  package perl_pkg node['perl']['packages']
+  package node['perl']['packages']
 
   cpanm = node['perl']['cpanm'].to_hash
 
