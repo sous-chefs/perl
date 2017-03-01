@@ -7,7 +7,7 @@ property :version, String
 property :cwd, String
 
 action :install do
-  execute "CPAN :install #{new_resource.name}" do
+  execute "CPAN :install #{new_resource.module_name}" do
     cwd current_working_dir
     command cpanm_install_cmd
     environment 'HOME' => current_working_dir, 'PATH' => '/usr/local/bin:/usr/bin:/bin'
@@ -16,7 +16,7 @@ action :install do
 end
 
 action :uninstall do
-  execute "CPAN :uninstall #{new_resource.name}" do
+  execute "CPAN :uninstall #{new_resource.module_name}" do
     cwd current_working_dir
     command cpanm_uninstall_cmd
     only_if module_exists
@@ -35,7 +35,7 @@ action_class.class_eval do
   end
 
   def parse_cpan_version
-    mod_ver_cmd = Mixlib::ShellOut.new("perl -M#{new_resource.name} -e 'print $#{new_resource.name}::VERSION;' 2> /dev/null")
+    mod_ver_cmd = Mixlib::ShellOut.new("perl -M#{new_resource.module_name} -e 'print $#{new_resource.module_name}::VERSION;' 2> /dev/null")
     mod_ver_cmd.run_command
     mod_ver = mod_ver_cmd.stdout
     return mod_ver if mod_ver.empty?
@@ -47,14 +47,14 @@ action_class.class_eval do
   end
 
   def module_exists
-    "perl -m#{new_resource.name} -e ';' 2> /dev/null"
+    "perl -m#{new_resource.module_name} -e ';' 2> /dev/null"
   end
 
   def cpanm_install_cmd
     @cmd = "#{node['perl']['cpanm']['path']} --quiet "
     @cmd += '--force ' if new_resource.force
     @cmd += '--notest ' unless new_resource.test
-    @cmd += new_resource.name
+    @cmd += new_resource.module_name
     @cmd += parsed_version
     @cmd
   end
@@ -63,7 +63,7 @@ action_class.class_eval do
     @cmd = "#{node['perl']['cpanm']['path']} "
     @cmd += '--force ' if new_resource.force
     @cmd += '--uninstall '
-    @cmd += new_resource.name
+    @cmd += new_resource.module_name
     @cmd
   end
 
