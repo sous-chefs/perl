@@ -6,14 +6,14 @@ unless platform?('windows')
   include_recipe 'build-essential::default' # required to compile modules
 
   cpan_module 'Install test module' do
-    module 'Test::MockModule'
+    module_name 'Test::MockModule'
     version '>= 0.05'
-    action [:install]
+    action :install
   end
 
   cpan_module 'Uninstall test module' do
-    module 'Test::MockModule'
-    action [:uninstall]
+    module_name 'Test::MockModule'
+    action :uninstall
   end
 
   # cpan_module 'Test::MockModule' do
