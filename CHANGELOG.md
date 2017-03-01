@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## 5.1.0 (2017-03-01)
+
+- Resolve resource cloning in the test cookbook
+- Test with Local Delivery instead of Rake
+- Use the root_group attribute from Ohai instead of defining it ourselves
+- Use multi-package to speed up installs in the default recipe
+- Don’t use “module” as a resource property since its reserved. Instead use module_name and wire it up so a user can actually define a module name here instead of the module name coming from the name of the resource
+
 ## 5.0.0 (2017-02-27)
 
 - Convert the existing HWRP to a custom resource and require Chef 12.5 and later
