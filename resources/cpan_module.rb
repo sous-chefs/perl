@@ -23,7 +23,7 @@ action :uninstall do
   end
 end
 
-action_class.class_eval do
+action_class do
   def module_exists_new_enough
     existing_version = parse_cpan_version
     return false if existing_version.empty? # mod doesn't exist

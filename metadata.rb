@@ -16,5 +16,4 @@ depends 'windows', '>= 3.0'
 
 source_url 'https://github.com/chef-cookbooks/perl'
 issues_url 'https://github.com/chef-cookbooks/perl/issues'
-
-chef_version '>= 12.1'
+chef_version '>= 12.7' if respond_to?(:chef_version)
