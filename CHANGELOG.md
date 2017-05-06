@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## 5.2.0 (2017-05-06)
+
+- Fix license string to be a SPDX standard license string
+- Simplify true/false statement
+- Depend on a modern windows cookbook
+- Require Chef 12.7+ to workaround an action_class bug
+
 ## 5.1.0 (2017-03-01)
 
 - Resolve resource cloning in the test cookbook
