@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## 5.2.1 (2017-08-30)
+
+- Do not use an explicit owner and group on Windows. Let Chef do the right thing here which prevents breakage when the Administrator account has been renamed
+
 ## 5.2.0 (2017-05-06)
 
 - Fix license string to be a SPDX standard license string
