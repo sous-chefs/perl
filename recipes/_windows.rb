@@ -28,8 +28,6 @@ if tempdir.nil? || tempdir == ''
   directory tempdir do
     action :create
     inherits true
-    owner 'administrator'
-    group 'administrators'
   end
 end
 
@@ -37,16 +35,11 @@ directory node['perl']['install_dir'] do
   action :create
   recursive true
   inherits true
-  owner 'administrator'
-  group 'administrators'
 end
 
 remote_file "#{tempdir}\\#{installer}" do
   source "http://strawberryperl.com/download/#{node['perl']['maj_version']}.#{node['perl']['min_version']}.#{node['perl']['sub_version']}/#{installer}"
   action :create
-  owner 'administrator'
-  group 'administrators'
-  mode '0774'
 end
 
 execute 'Install StrawberryPerl' do
