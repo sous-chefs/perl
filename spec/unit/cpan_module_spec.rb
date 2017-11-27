@@ -22,7 +22,7 @@ describe 'perl_test::default' do
       expect(chef_run).to uninstall_cpan_module('Uninstall test module')
     end
 
-    it 'installs Test::MockModule via CPAN' do
+    it 'uninstalls Test::MockModule via CPAN' do
       stub_command("perl -mTest::MockModule -e ';' 2> /dev/null").and_return(true)
       expect(chef_run).to run_execute('CPAN :uninstall Test::MockModule')
     end
