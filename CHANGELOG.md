@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## 5.3.0 (2017-11-27)
+
+- Fixing the removal of the leading `v` and the conversion of the underscores to dots in Perl module versions when the version strings already have dots (ex: v1.2.0)
+- Enable FC016 testing again
+- Use the latest cpanm which has 4 years of bug fixes and enhancements
+
 ## 5.2.1 (2017-08-30)
 
 - Do not use an explicit owner and group on Windows. Let Chef do the right thing here which prevents breakage when the Administrator account has been renamed
