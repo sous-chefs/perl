@@ -22,7 +22,7 @@ when 'windows'
   # https://chocolatey.org/packages/StrawberryPerl
   chocolatey_package 'strawberryperl'
 
-  windows_path "C:\\Strawberry\\perl\\bin" do
+  windows_path 'C:\\Strawberry\\perl\\bin' do
     action :add
   end
 else

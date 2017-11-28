@@ -19,7 +19,7 @@ action :uninstall do
   execute "CPAN :uninstall #{new_resource.module_name}" do
     cwd current_working_dir
     command cpanm_uninstall_cmd
-    only_if module_exists
+    only_if { module_exists? }
   end
 end
 
@@ -47,8 +47,8 @@ action_class do
     version_match[0]
   end
 
-  def module_exists
-    "perl -m#{new_resource.module_name} -e ';' 2> /dev/null"
+  def module_exists?
+    !shell_out('perl', '-M', new_resource.module_name, '-e', '1').error?
   end
 
   def cpanm_install_cmd
@@ -68,15 +68,21 @@ action_class do
     @cmd
   end
 
-  # a bit of a stub, could use a version parser for really consistent expeirence
+  # a bit of a stub, could use a version parser for really consistent experience
   def parsed_version
     return "~\"#{new_resource.version}\"" if new_resource.version
     ''
   end
 
+  def command_path
+    return 'C:\\strawberry\\perl\\bin' if platform?('windows')
+    '/usr/local/bin:/usr/bin:/bin'
+  end
+
   def current_working_dir
     return new_resource.cwd if new_resource.cwd
-    return '/var/root' if node['platform'] == 'mac_os_x'
+    return '/var/root' if platform?('mac_os_x')
+    return 'C:\\' if platform?('windows')
     '/root'
   end
 end
