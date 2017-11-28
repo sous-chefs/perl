@@ -25,6 +25,9 @@ platforms:
   - name: windows-server-2012r2-standard
     driver_config:
       box: chef/windows-server-2012r2-standard
+  - name: windows-server-2016-standard
+    driver_config:
+      box: chef/windows-server-2016-standard
 
 suites:
   - name: default
