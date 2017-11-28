@@ -40,7 +40,8 @@ action_class do
     mod_ver = mod_ver_cmd.stdout
     return mod_ver if mod_ver.empty?
     # remove leading v and convert underscores to dots since gems parses them wrong
-    mod_ver.gsub!(/v_/, 'v' => 3, '_' => '.')
+    mod_ver.gsub!(/v_?(\d)/, '\\1')
+    mod_ver.tr!('_', '.')
     # in the event that this command outputs whatever it feels like, only keep the first vers number!
     version_match = /(^[0-9.]*)/.match(mod_ver)
     version_match[0]
