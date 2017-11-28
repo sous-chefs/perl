@@ -1,8 +1,10 @@
 apt_update 'update'
 
-include_recipe 'perl::default'
-
-unless platform?('windows')
+if platform?('windows')
+  include_recipe 'chocolatey::default'
+  include_recipe 'perl::default'
+else
+  include_recipe 'perl::default'
   include_recipe 'build-essential::default' # required to compile modules
 
   cpan_module 'Install test module' do

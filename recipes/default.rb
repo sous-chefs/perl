@@ -19,7 +19,12 @@
 
 case node['platform']
 when 'windows'
-  include_recipe 'perl::_windows'
+  # https://chocolatey.org/packages/StrawberryPerl
+  chocolatey_package 'strawberryperl'
+
+  windows_path "C:\\Strawberry\\perl\\bin" do
+    action :add
+  end
 else
   package node['perl']['packages']
 
