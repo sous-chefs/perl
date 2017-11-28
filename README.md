@@ -22,14 +22,39 @@ Manages Perl installation and provides `cpan_module`, to install modules from...
 
 - windows
 
+## Recipes
+
+- `default` - On Linux installs perl packages and pulls cpanm from Github. On Windows installs the Strawberry Perl Chocolatey package. Requires Chocolatey to be installed prior to running this cookbook, which can be done with the [chocolatey cookbook](https://supermarket.chef.io/cookbooks/chocolatey) from the Supermarket.
+
 ## Attributes
 
-- perl['packages'] - platform specific packages installed by default recipe
-- perl['cpanm']['path'] - platform specific path for `cpanm` binary to live
-- perl['cpanm']['url'] - URL to download cpanm script from
-- perl['cpanm']['checksum'] - checksum for the above remote file
+The cookbook ships with a sane set of platform specific attributes for installing perl as well as cpanm. There _should_ be no need to modify these attributes to use this cookbook.
 
-## Usage
+- `node['perl']['packages']` - platform specific packages installed by default recipe
+- `node['perl']['cpanm']['path']` - platform specific path for `cpanm` binary to live
+- `node['perl']['cpanm']['url']` - URL to download cpanm script from (*nix only)
+- `node['perl']['cpanm']['checksum']` - checksum for the above remote file (*nix only)
+- `node['perl']['version']` - version of perl to install. (windows only)
+- `node['perl']['cpanm']['path']` - The path to the cpanm binary. On *nix systems this is where the file will be installed. On Windows it's part of Strawberry Perl so no additional installation is required.
+
+## Resources
+
+### cpan_module
+
+#### Actions
+
+- `:install` - install the module (default action)
+- `:uninstall` - uninstall the module
+
+#### Properties
+
+- `module_name` - The name of the module if it's different than the name of the resource property
+- `force` - To force the install within cpanm (default: false)
+- `test` - To do a test install (default: false)
+- `version` - Any version string cpanm would find acceptable
+- `cwd` - A path to change into before running cpanm
+
+#### Examples
 
 To install a module from CPAN:
 
