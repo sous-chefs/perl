@@ -18,7 +18,7 @@
 #
 
 case node['platform_family']
-when 'rhel', 'fedora'
+when 'rhel', 'fedora', 'amazon'
   default['perl']['packages'] = %w(perl perl-CPAN)
 
   default['perl']['packages'] = case node['platform_version'].to_i
