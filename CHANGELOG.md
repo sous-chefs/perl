@@ -2,6 +2,20 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## 6.0.0 (2017-11-27)
+
+### Breaking changes
+
+- On Windows this cookbook now uses the Chocolatey package manager to install Strawberry Perl instead of downloading the zip file and manually installing it. This does require chocolatey to first be installed on the system and will use the C:\strawberry\perl path
+
+### Other Changes
+
+- Fixed Amazon Linux support on Chef 13
+- Removed build-essential from the Berksfile since it wasn't needed there
+- Fixed cpan_module resource to work on Windows as well
+- Added Windows 2016 Testing
+- Improved attribute and resource documentation in the readme
+
 ## 5.3.0 (2017-11-27)
 
 - Fixing the removal of the leading `v` and the conversion of the underscores to dots in Perl module versions when the version strings already have dots (ex: v1.2.0)
@@ -25,7 +39,7 @@ This file is used to list changes made in each version of the perl cookbook.
 - Test with Local Delivery instead of Rake
 - Use the root_group attribute from Ohai instead of defining it ourselves
 - Use multi-package to speed up installs in the default recipe
-- Don’t use “module” as a resource property since its reserved. Instead use module_name and wire it up so a user can actually define a module name here instead of the module name coming from the name of the resource
+- Don't use "module" as a resource property since its reserved. Instead use module_name and wire it up so a user can actually define a module name here instead of the module name coming from the name of the resource
 
 ## 5.0.0 (2017-02-27)
 
