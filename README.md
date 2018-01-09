@@ -36,6 +36,7 @@ The cookbook ships with a sane set of platform specific attributes for installin
 - `node['perl']['cpanm']['checksum']` - checksum for the above remote file (*nix only)
 - `node['perl']['version']` - version of perl to install. (windows only)
 - `node['perl']['cpanm']['path']` - The path to the cpanm binary. On *nix systems this is where the file will be installed. On Windows it's part of Strawberry Perl so no additional installation is required.
+- `node['perl']['cpanm']['suppress_diff']` - Whether or not to suppress the diff of the cpanm file.
 
 ## Resources
 

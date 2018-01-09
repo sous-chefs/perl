@@ -40,5 +40,6 @@ else
     owner 'root'
     group node['root_group']
     mode '0755'
+    sensitive cpanm['suppress_diff']
   end
 end
