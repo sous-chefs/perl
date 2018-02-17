@@ -4,11 +4,11 @@ maintainer_email 'cookbooks@chef.io'
 license 'Apache-2.0'
 description 'Installs perl and provides a resource for maintaining CPAN modules'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '6.0.0'
+version '6.0.1'
 
 recipe 'perl', 'Installs perl and adds a provider to install cpan modules'
 
-%w(ubuntu debian mint redhat centos amazon scientific oracle fedora arch windows zlinux suse opensuse opensuseleap).each do |os|
+%w(ubuntu debian mint redhat centos amazon scientific oracle fedora windows zlinux suse opensuse opensuseleap).each do |os|
   supports os
 end
 
