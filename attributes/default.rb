@@ -37,6 +37,7 @@ end
 
 default['perl']['cpanm']['url'] = 'https://raw.githubusercontent.com/miyagawa/cpanminus/1.7043/cpanm'
 default['perl']['cpanm']['checksum'] = 'd2221f1adb956591fa43cd61d0846b961be1fffa222210f097bfd472a11e0539'
+default['perl']['cpanm']['suppress_diff'] = false
 
 default['perl']['cpanm']['path'] = if node['platform_family'] == 'windows'
                                      'C:\\strawberry\\perl\\bin\\cpanm'
