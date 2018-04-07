@@ -3,7 +3,7 @@ apt_update 'update'
 if platform?('windows')
   include_recipe 'chocolatey::default'
 else
-  include_recipe 'build-essential::default' # required to compile modules
+  build_essentail 'install compilation tools' # required to compile modules
 end
 
 include_recipe 'perl::default'
