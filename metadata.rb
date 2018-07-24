@@ -12,8 +12,6 @@ recipe 'perl', 'Installs perl and adds a provider to install cpan modules'
   supports os
 end
 
-depends 'windows', '>= 3.0'
-
 source_url 'https://github.com/chef-cookbooks/perl'
 issues_url 'https://github.com/chef-cookbooks/perl/issues'
-chef_version '>= 12.7' if respond_to?(:chef_version)
+chef_version '>= 13.4'

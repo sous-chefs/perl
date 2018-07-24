@@ -20,7 +20,7 @@ Manages Perl installation and provides `cpan_module`, to install modules from...
 
 ### Cookbooks
 
-- windows
+- none
 
 ## Recipes
 
