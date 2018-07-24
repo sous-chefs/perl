@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+## 7.0.1 (2018-07-24)
+
+- Fix readme chef version requirement
+
 ## 7.0.0 (2018-07-24)
 
 - Remove windows cookbook dependency and require Chef 13.4+
