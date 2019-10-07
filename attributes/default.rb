@@ -2,7 +2,7 @@
 # Cookbook:: perl
 # Attributes:: default
 #
-# Copyright:: 2009-2017, Chef Software, Inc.
+# Copyright:: 2009-2019, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ default['perl']['cpanm']['url'] = 'https://raw.githubusercontent.com/miyagawa/cp
 default['perl']['cpanm']['checksum'] = 'd2221f1adb956591fa43cd61d0846b961be1fffa222210f097bfd472a11e0539'
 default['perl']['cpanm']['suppress_diff'] = false
 
-default['perl']['cpanm']['path'] = if node['platform_family'] == 'windows'
+default['perl']['cpanm']['path'] = if platform_family?('windows')
                                      'C:\\strawberry\\perl\\bin\\cpanm'
                                    else
                                      '/usr/local/bin/cpanm'
