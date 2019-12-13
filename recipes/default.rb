@@ -17,8 +17,7 @@
 # limitations under the License.
 #
 
-case node['platform']
-when 'windows'
+if platform?('windows')
   # https://chocolatey.org/packages/StrawberryPerl
   chocolatey_package 'strawberryperl'
 
