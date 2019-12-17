@@ -1,8 +1,8 @@
 provides :cpan_module
 
 property :module_name, String, name_property: true
-property :force, [TrueClass, FalseClass], default: false
-property :test, [TrueClass, FalseClass], default: false
+property :force, [true, false], default: false
+property :test, [true, false], default: false
 property :version, String
 property :cwd, String
 
