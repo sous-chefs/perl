@@ -5,7 +5,7 @@ license 'Apache-2.0'
 description 'Installs perl and provides a resource for maintaining CPAN modules'
 version '7.0.1'
 
-%w(ubuntu debian mint redhat centos amazon scientific oracle fedora windows zlinux suse opensuse opensuseleap).each do |os|
+%w(ubuntu debian linuxmint redhat centos amazon scientific oracle fedora windows zlinux suse opensuse opensuseleap).each do |os|
   supports os
 end
 
