@@ -7,23 +7,25 @@ describe 'perl_test::default' do
                             .converge(described_recipe)
     end
 
+    before do
+      stubs_for_provider('perl_cpan_module[Uninstall test module]') do |provider|
+        allow(provider).to receive_shell_out('perl', '-M', 'Test::MockModule', '-e', '1')
+      end
+    end
+
     it 'expects cpan resource to run with install action' do
-      stub_command("perl -mTest::MockModule -e ';' 2> /dev/null").and_return(false)
       expect(chef_run).to install_cpan_module('Install test module')
     end
 
     it 'installs Test::MockModule via CPAN' do
-      stub_command("perl -mTest::MockModule -e ';' 2> /dev/null").and_return(false)
       expect(chef_run).to run_execute('CPAN :install Test::MockModule')
     end
 
     it 'expects cpan resource to run with uninstall action' do
-      stub_command("perl -mTest::MockModule -e ';' 2> /dev/null").and_return(true)
       expect(chef_run).to uninstall_cpan_module('Uninstall test module')
     end
 
     it 'uninstalls Test::MockModule via CPAN' do
-      stub_command("perl -mTest::MockModule -e ';' 2> /dev/null").and_return(true)
       expect(chef_run).to run_execute('CPAN :uninstall Test::MockModule')
     end
   end
