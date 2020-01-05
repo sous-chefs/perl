@@ -23,21 +23,21 @@ env:
   - INSTANCE=default-debian-9
   - INSTANCE=default-debian-10
   - INSTANCE=default-fedora-latest
-  - INSTANCE=default-opensuse-leap
-  - INSTANCE=default-ubuntu-1404
+  - INSTANCE=default-opensuse-leap-15
   - INSTANCE=default-ubuntu-1604
+  - INSTANCE=default-ubuntu-1804
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
   - eval "$(chef shell-init bash)"
   - chef --version
 
-script: KITCHEN_LOCAL_YAML=kitchen.dokken.yml kitchen verify ${INSTANCE}
+script: KITCHEN_LOCAL_YAML=kitchen.dokken.yml CHEF_VERSION=${CHEF_VERSION} kitchen verify ${INSTANCE}
 
 matrix:
   include:
     - script:
-      - chef exec delivery local all
+      - delivery local all
       env:
         - UNIT_AND_LINT=1
         - CHEF_LICENSE=accept
