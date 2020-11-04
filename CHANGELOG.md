@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Sous Chefs Adoption
 - Update Changelog to Sous Chefs
 
+### Fixed
+
+- ChefSpec fixes
+
 ## 7.0.1 (2018-07-24)
 
 - Fix readme chef version requirement
