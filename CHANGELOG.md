@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ChefSpec fixes
 - Yamllint fixes
 
+### Added
+
+- Add mdlrc
+
 ## 7.0.1 (2018-07-24)
 
 - Fix readme chef version requirement
