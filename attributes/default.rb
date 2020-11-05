@@ -22,6 +22,8 @@ when 'rhel', 'fedora', 'amazon'
   default['perl']['packages'] = %w(perl perl-devel perl-CPAN)
 when 'debian'
   default['perl']['packages'] = %w(perl libperl-dev)
+when 'freebsd'
+  default['perl']['packages'] = %w(perl5)
 when 'windows'
   default['perl']['version'] = '5.26.1.1'
 else

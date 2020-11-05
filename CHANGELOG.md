@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - ChefSpec fixes
 - Yamllint fixes
+- Fix FreeBSD installation
 
 ### Added
 
