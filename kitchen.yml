@@ -18,6 +18,7 @@ platforms:
   - name: opensuse-leap-15
   - name: ubuntu-16.04
   - name: ubuntu-18.04
+  - name: ubuntu-20.04
   - name: windows-server-2012r2-standard
     driver_config:
       box: chef/windows-server-2012r2-standard
