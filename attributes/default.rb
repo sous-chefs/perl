@@ -19,14 +19,7 @@
 
 case node['platform_family']
 when 'rhel', 'fedora', 'amazon'
-  default['perl']['packages'] = %w(perl perl-CPAN)
-
-  default['perl']['packages'] = case node['platform_version'].to_i
-                                when 5
-                                  %w(perl)
-                                else
-                                  %w(perl perl-devel perl-CPAN)
-                                end
+  default['perl']['packages'] = %w(perl perl-devel perl-CPAN)
 when 'debian'
   default['perl']['packages'] = %w(perl libperl-dev)
 when 'windows'
