@@ -3,6 +3,9 @@ driver:
 
 provisioner:
   name: chef_zero
+  product_name: chef
+  enforce_idempotency: true
+  multiple_converge: 2
   deprecations_as_errors: true
 
 verifier:
@@ -14,7 +17,7 @@ platforms:
   - name: centos-8
   - name: debian-9
   - name: debian-10
-  - name: freebsd-11
+  - name: freebsd-12
   - name: opensuse-leap-15
   - name: ubuntu-16.04
   - name: ubuntu-18.04
@@ -28,4 +31,5 @@ platforms:
 
 suites:
   - name: default
-    run_list: perl_test::default
+    run_list:
+      - perl_test::default
