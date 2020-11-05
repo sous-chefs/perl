@@ -1,14 +1,13 @@
 require 'spec_helper'
 
 describe 'perl_test::default' do
-  context 'on Ubuntu 16.04' do
-    let(:chef_run) do
-      ChefSpec::ServerRunner.new(step_into: 'cpan_module')
-                            .converge(described_recipe)
+  context 'on Ubuntu' do
+    cached(:chef_run) do
+      ChefSpec::ServerRunner.new(platform: 'ubuntu', step_into: 'cpan_module').converge(described_recipe)
     end
 
     before do
-      stubs_for_provider('perl_cpan_module[Uninstall test module]') do |provider|
+      stubs_for_provider('cpan_module[Uninstall test module]') do |provider|
         allow(provider).to receive_shell_out('perl', '-M', 'Test::MockModule', '-e', '1')
       end
     end

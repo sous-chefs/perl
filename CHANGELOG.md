@@ -2,6 +2,36 @@
 
 This file is used to list changes made in each version of the perl cookbook.
 
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## Unreleased
+
+### Changed
+
+- Sous Chefs Adoption
+- Update Changelog to Sous Chefs
+- Update to use Sous Chefs GH workflow
+- Update README to sous-chefs
+- Update metadata.rb to Sous Chefs
+- Update test-kitchen to Sous Chefs
+
+### Fixed
+
+- ChefSpec fixes
+- Yamllint fixes
+- Fix FreeBSD installation
+
+### Added
+
+- Add mdlrc
+- Add Ubuntu 20.04 testing
+
+### Removed
+
+- Remove EL 6 testing
+- Remove Amazon Linux 1 testing
+
 ## 7.0.1 (2018-07-24)
 
 - Fix readme chef version requirement
