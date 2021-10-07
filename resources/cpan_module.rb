@@ -1,4 +1,5 @@
 provides :cpan_module
+unified_mode true
 
 property :module_name, String, name_property: true
 property :force, [true, false], default: false
