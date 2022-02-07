@@ -1,0 +1,52 @@
+---
+name: ci
+
+"on":
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint-unit:
+    uses: sous-chefs/.github/.github/workflows/lint-unit.yml@0.0.3
+
+  integration:
+    needs: lint-unit
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - almalinux-8
+          - amazonlinux-2
+          - debian-10
+          - debian-11
+          - centos-7
+          - centos-stream-8
+          - fedora-latest
+          - ubuntu-18.04
+          - ubuntu-20.04
+          - rockylinux-8
+          - opensuse-leap-15
+        suite:
+          - default
+      fail-fast: false
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Install Chef
+        uses: actionshub/chef-install@main
+      - name: Dokken
+        uses: actionshub/test-kitchen@main
+        env:
+          CHEF_LICENSE: accept-no-persist
+          KITCHEN_LOCAL_YAML: kitchen.dokken.yml
+        with:
+          suite: ${{ matrix.suite }}
+          os: ${{ matrix.os }}
+      - name: Print debug output on failure
+        if: failure()
+        run: |
+            set -x
+            sudo journalctl -l --since today
+            KITCHEN_LOCAL_YAML=kitchen.dokken.yml /usr/bin/kitchen exec ${{ matrix.suite }}-${{ matrix.os }} -c "journalctl -l"
