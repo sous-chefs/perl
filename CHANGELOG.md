@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Enable `unified_mode` and require Chef >= 15.3
 - Remove delivery and move to calling RSpec directly via a reusable workflow
 - Update tested platforms
 - Standardise files with files in sous-chefs/repo-management
