@@ -6,7 +6,7 @@ description       'Installs perl and provides a resource for maintaining CPAN mo
 version           '7.1.3'
 source_url        'https://github.com/sous-chefs/perl'
 issues_url        'https://github.com/sous-chefs/perl/issues'
-chef_version      '>= 13.4'
+chef_version      '>= 15.3'
 
 supports 'amazon'
 supports 'centos'

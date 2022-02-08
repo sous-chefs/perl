@@ -1,4 +1,4 @@
-name 'perl_test'
+name 'test'
 version '0.0.1'
 
 depends 'perl'

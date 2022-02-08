@@ -5,6 +5,7 @@ property :force, [true, false], default: false
 property :test, [true, false], default: false
 property :version, String
 property :cwd, String
+unified_mode true
 
 action :install do
   execute "CPAN :install #{new_resource.module_name}" do
