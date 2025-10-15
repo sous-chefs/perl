@@ -45,7 +45,7 @@ action_class do
     mod_ver.tr!('_', '.')
     # in the event that this command outputs whatever it feels like, only keep the first vers number!
     version_match = /(^[0-9.]*)/.match(mod_ver)
-    version_match[0]
+    version_match.first
   end
 
   def module_exists?
