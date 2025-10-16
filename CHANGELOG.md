@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [8.0.21](https://github.com/sous-chefs/perl/compare/8.0.20...v8.0.21) (2025-10-16)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#89](https://github.com/sous-chefs/perl/issues/89)) ([c3482c9](https://github.com/sous-chefs/perl/commit/c3482c91627f080d4f04aa4a3d4cb19f390f604f))
+
 ## 8.0.19 - *2024-11-18*
 
 Standardise files with files in sous-chefs/repo-management
