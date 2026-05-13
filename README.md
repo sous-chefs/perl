@@ -6,7 +6,7 @@
 [![OpenCollective](https://opencollective.com/sous-chefs/sponsors/badge.svg)](#sponsors)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Manages Perl installation and provides `cpan_module`, to install modules from... CPAN.
+Provides resources to install Perl and maintain modules from CPAN.
 
 ## Maintainers
 
@@ -17,38 +17,37 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 ### Platforms
 
 - Debian/Ubuntu/Mint
-- RHEL/CentOS/Scientific/Amazon/Oracle
+- RHEL/CentOS Stream/Amazon/Oracle/Rocky/AlmaLinux
 - Fedora
-- openSUSE
 - Windows
 
 ### Chef
 
-- Chef 13.4+
+- Chef 15.3+
 
 ### Cookbooks
 
 - none
 
-## Recipes
+## Migration
 
-- `default` - On Linux installs perl packages and pulls cpanm from Github. On Windows installs the Strawberry Perl Chocolatey package. Requires Chocolatey to be installed prior to running this cookbook, which can be done with the [chocolatey cookbook](https://supermarket.chef.io/cookbooks/chocolatey) from the Supermarket.
-
-## Attributes
-
-The cookbook ships with a sane set of platform specific attributes for installing perl as well as cpanm. There _should_ be no need to modify these attributes to use this cookbook.
-
-- `node['perl']['packages']` - platform specific packages installed by default recipe
-- `node['perl']['cpanm']['path']` - platform specific path for `cpanm` binary to live
-- `node['perl']['cpanm']['url']` - URL to download cpanm script from (*nix only)
-- `node['perl']['cpanm']['checksum']` - checksum for the above remote file (*nix only)
-- `node['perl']['version']` - version of perl to install. (windows only)
-- `node['perl']['cpanm']['path']` - The path to the cpanm binary. On *nix systems this is where the file will be installed. On Windows it's part of Strawberry Perl so no additional installation is required.
-- `node['perl']['cpanm']['suppress_diff']` - Whether or not to suppress the diff of the cpanm file.
+This cookbook no longer ships recipes or attributes. See [migration.md](migration.md) for details on
+moving from `perl::default` and `node['perl']` attributes to custom resources.
 
 ## Resources
 
+### perl_install
+
+Installs Perl and cpanminus. See [documentation/perl_install.md](documentation/perl_install.md).
+
+```ruby
+perl_install 'default'
+```
+
 ### cpan_module
+
+Installs or uninstalls CPAN modules with cpanminus. See
+[documentation/perl_cpan_module.md](documentation/perl_cpan_module.md).
 
 #### Actions
 
@@ -62,6 +61,7 @@ The cookbook ships with a sane set of platform specific attributes for installin
 - `test` - To do a test install (default: false)
 - `version` - Any version string cpanm would find acceptable
 - `cwd` - A path to change into before running cpanm
+- `cpanm_path` - Path to the cpanminus executable
 
 #### Examples
 
@@ -74,7 +74,7 @@ cpan_module 'App::Munchies'
 Optionally, installation can forced with the 'force' parameter.
 
 ```ruby
-cpan_module 'App::Munchies'
+cpan_module 'App::Munchies' do
   force true
 end
 ```
@@ -84,7 +84,7 @@ You can also use [cpanm's version mechanism](http://search.cpan.org/~miyagawa/Ap
 Exactly version 1.01 of `App::Munchies` will be installed:
 
 ```ruby
-cpan_module 'App::Munchies'
+cpan_module 'App::Munchies' do
   version '== 1.01'
 end
 ```
@@ -92,7 +92,7 @@ end
 At least version 1.01 of `App::Munchies` will be installed:
 
 ```ruby
-cpan_module 'App::Munchies'
+cpan_module 'App::Munchies' do
   version '1.01'
 end
 ```
@@ -100,15 +100,15 @@ end
 At least version 1.01 will be installed, but not version 2:
 
 ```ruby
-cpan_module 'App::Munchies'
+cpan_module 'App::Munchies' do
   version '>= 1.01, < 2.0'
 end
 ```
 
-Additionally, you can use the `cpan_module` LWRP to delete a given package (uses cpanm's `--uninstall` param)
+Additionally, you can use `cpan_module` to delete a given package using cpanm's `--uninstall` param.
 
 ```ruby
-cpan_module 'App::Munchies'
+cpan_module 'App::Munchies' do
   action :uninstall
 end
 ```
