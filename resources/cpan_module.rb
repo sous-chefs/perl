@@ -1,17 +1,20 @@
+# frozen_string_literal: true
+
 provides :cpan_module
+unified_mode true
 
 property :module_name, String, name_property: true
 property :force, [true, false], default: false
 property :test, [true, false], default: false
 property :version, String
 property :cwd, String
-unified_mode true
+property :cpanm_path, String
 
 action :install do
   execute "CPAN :install #{new_resource.module_name}" do
     cwd current_working_dir
     command cpanm_install_cmd
-    environment 'HOME' => current_working_dir, 'PATH' => '/usr/local/bin:/usr/bin:/bin'
+    environment 'HOME' => current_working_dir, 'PATH' => command_path
     not_if { module_exists_new_enough }
   end
 end
@@ -25,14 +28,17 @@ action :uninstall do
 end
 
 action_class do
+  include ::PerlCookbook::Cookbook::Helpers
+
   def module_exists_new_enough
     existing_version = parse_cpan_version
     return false if existing_version.empty? # mod doesn't exist
     return true if new_resource.version.nil? # mod exists and version is unimportant
-    @comparator, @pending_version = new_resource.version.split(' ', 2)
-    @current_vers = Gem::Version.new(existing_version)
-    @pending_vers = Gem::Version.new(@pending_version)
-    @current_vers.method(@comparator).call(@pending_vers)
+
+    comparator, pending_version = version_comparison
+    current_version = Gem::Version.new(existing_version)
+    requested_version = Gem::Version.new(pending_version)
+    current_version.method(comparator).call(requested_version)
   end
 
   def parse_cpan_version
@@ -49,24 +55,26 @@ action_class do
   end
 
   def module_exists?
-    !shell_out('perl', '-M', new_resource.module_name, '-e', '1').error?
+    mod_check_cmd = Mixlib::ShellOut.new('perl', '-M', new_resource.module_name, '-e', '1')
+    mod_check_cmd.run_command
+    !mod_check_cmd.error?
   end
 
   def cpanm_install_cmd
-    @cmd = "#{node['perl']['cpanm']['path']} --quiet "
-    @cmd += '--force ' if new_resource.force
-    @cmd += '--notest ' unless new_resource.test
-    @cmd += new_resource.module_name
-    @cmd += parsed_version
-    @cmd
+    cmd = "#{resolved_cpanm_path} --quiet "
+    cmd += '--force ' if new_resource.force
+    cmd += '--notest ' unless new_resource.test
+    cmd += new_resource.module_name
+    cmd += parsed_version
+    cmd
   end
 
   def cpanm_uninstall_cmd
-    @cmd = "#{node['perl']['cpanm']['path']} "
-    @cmd += '--force ' if new_resource.force
-    @cmd += '--uninstall '
-    @cmd += new_resource.module_name
-    @cmd
+    cmd = "#{resolved_cpanm_path} "
+    cmd += '--force ' if new_resource.force
+    cmd += '--uninstall '
+    cmd += new_resource.module_name
+    cmd
   end
 
   # a bit of a stub, could use a version parser for really consistent experience
@@ -85,5 +93,16 @@ action_class do
     return '/var/root' if platform?('mac_os_x')
     return 'C:\\' if platform?('windows')
     '/root'
+  end
+
+  def version_comparison
+    comparator, pending_version = new_resource.version.split(' ', 2)
+    return ['>=', comparator] if pending_version.nil?
+
+    [comparator, pending_version]
+  end
+
+  def resolved_cpanm_path
+    new_resource.cpanm_path || default_cpanm_path
   end
 end
