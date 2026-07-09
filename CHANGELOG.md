@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [9.0.1](https://github.com/sous-chefs/perl/compare/v9.0.0...v9.0.1) (2026-07-09)
+
+
+### Bug Fixes
+
+* migrate to Policyfile ([#103](https://github.com/sous-chefs/perl/issues/103)) ([ac40940](https://github.com/sous-chefs/perl/commit/ac4094042ce44dcf5987ef5d5f7bd04b3b1dce91))
+
 ## [9.0.0](https://github.com/sous-chefs/perl/compare/v8.0.21...v9.0.0) (2026-05-13)
 
 
